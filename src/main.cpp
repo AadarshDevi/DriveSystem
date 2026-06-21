@@ -6,7 +6,7 @@
 const int pinIn1 = 21;
 const int pinIn2 = 22;
 const int pinPWM = 23;
- 
+
 const int minPower = 35;
 const int maxPower = 255;
 int power = 0;
@@ -18,7 +18,7 @@ void setup() {
     motor.debug(true);
     motor.setPower(127);
     motor.start();
-    delay(1000);
+    delay(10000);
 }
 
 void loop() {
@@ -27,14 +27,7 @@ void loop() {
         cmd.trim();
 
         if (cmd.length() > 0) {
-            if (cmd == "--shutdown") {
-                motor.powerDown();
-                // Serial.println("[LOG] End of Motor Power Test");
-                delay(250);
-                for (;;) {
-                    delay(1000);
-                }
-            } else if (cmd.startsWith("--power")) {
+            if (cmd.startsWith("--power")) {
                 power = cmd.substring(cmd.indexOf("=") + 1).toInt();
                 motor.setPower(power);
             } else if (cmd.startsWith("--min-power")) {
@@ -43,6 +36,13 @@ void loop() {
             } else if (cmd.startsWith("--max-power")) {
                 int powerInput = cmd.substring(cmd.indexOf("=") + 1).toInt();
                 motor.setMaxPower(powerInput);
+            } else if (cmd == "--shutdown") {
+                motor.powerDown();
+                // Serial.println("[LOG] End of Motor Power Test");
+                delay(250);
+                for (;;) {
+                    delay(1000);
+                }
             }
         }
     }
