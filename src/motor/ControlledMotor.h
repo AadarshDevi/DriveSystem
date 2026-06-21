@@ -5,9 +5,9 @@
 #ifndef DRIVESYSTEM_CONTROLLEDMOTOR_H
 #define DRIVESYSTEM_CONTROLLEDMOTOR_H
 
-// class ControlledMotor extends RawMotor {
-//     public:
-//     ControlledMotor();
-// }
+class ControlledMotor : public RawMotor {
+public:
+    ControlledMotor();
+};
 
 #endif //DRIVESYSTEM_CONTROLLEDMOTOR_H

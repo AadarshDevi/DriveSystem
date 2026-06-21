@@ -6,14 +6,12 @@
 #define DRIVESYSTEM_MOTOR_H
 
 class RawMotor {
-
 private:
-
     // pins
     int pinPWM; // pwm pin
     int in1Pin; // in 1 pin
     int in2Pin; // in 2 pin
-
+    
     // pin status
     int in1Level; // high / low
     int in2Level; // high / low
@@ -32,7 +30,6 @@ private:
     bool canDebug = false; // tells if debug is available
 
 public:
-
     // constructor
     RawMotor(int new_pinPWM, int new_in1Pin, int new_in2Pin, int new_minPower, int new_maxPower);
 
@@ -59,7 +56,6 @@ public:
     void debug(bool new_canDebug); // debug statements in serial monitor
     void monitor(int new_power); // debug statements in serial monitor
     void info(); // print all the info of the motor like pins, bools, etc,.
-
 };
 
 #endif //DRIVESYSTEM_MOTOR_H

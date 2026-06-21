@@ -9,7 +9,6 @@
 
 // constructor
 RawMotor::RawMotor(int new_pinPWM, int new_in1Pin, int new_in2Pin, int new_minPower, int new_maxPower) {
-
   // set pins
   pinPWM = new_pinPWM;
   in1Pin = new_in1Pin;
@@ -86,11 +85,9 @@ void RawMotor::setMinPower(int new_minPower) {
 };
 
 void RawMotor::setPower(int new_power) {
-
   // makes sure the ower is or greater thn the min power limit
-  if(new_power < 0 || new_power < minPower) {
+  if (new_power < 0 || new_power < minPower) {
     if (shutdownMotor) {
-      // powerDown();
       power = 0;
     } else {
       power = minPower;
@@ -125,7 +122,7 @@ void RawMotor::run() {
   }
   analogWrite(pinPWM, power);
 }
-
+ 
 void RawMotor::shutdown(bool new_shutdownMotor) {
   shutdownMotor = new_shutdownMotor;
 }
@@ -142,7 +139,8 @@ void RawMotor::info() {
 }
 
 void RawMotor::monitor(int new_power) {
-  Serial.printf("Input:%d Motor:%d Min:%d Max:%d\n", new_power, power, minPower, maxPower); // prints power to serial graph
+  Serial.printf("Input:%d Motor:%d Min:%d Max:%d\n", new_power, power, minPower, maxPower);
+  // prints power to serial graph
 }
 
 void RawMotor::powerDown() {
