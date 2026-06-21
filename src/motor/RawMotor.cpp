@@ -111,3 +111,29 @@ void RawMotor::run() {
 }
 
 
+void RawMotor::info() {
+    if (!enableDebug) return;
+    debugPins();
+    debugMovement();
+    debugPower();
+}
+
+void RawMotor::debugAllPower(int inputPower) {
+    if (!enableDebug) return;
+    Serial.printf("Input:%d Motor:%d Min:%d Max:%d\r\n", inputPower, power, absMinPower, absMaxPower);
+}
+
+void RawMotor::debugPower() {
+    if (!enableDebug) return;
+    Serial.printf("Power:%d Min:%d Max:%d\r\n", power, absMinPower, absMaxPower);
+}
+
+void RawMotor::debugPins() {
+    if (!enableDebug) return;
+    Serial.printf("PWM:%d IN1:%d IN2:%d\r\n", pinPWM, pinIN1, pinIN2);
+}
+
+void RawMotor::debugMovement() {
+    if (!enableDebug) return;
+    Serial.printf("Rotation:%d Reverse:%d\r\n", rotationEnabled, reverseRotation);
+}
