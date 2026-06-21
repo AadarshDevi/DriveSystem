@@ -143,45 +143,45 @@ public:
      * checks if the motor IN1 pin is HIGH
      * @return IN1 pin HIGH
      */
-    bool isPinIN1Enabled();
+    bool isPinIN1Enabled() { return pinIN1Enabled; }
 
     /**
      * checks if the motor IN2 pin is HIGH
      * @return IN2 pin HIGH
      */
-    bool isPinIN2Enabled();
+    bool isPinIN2Enabled() { return pinIN2Enabled; }
 
     /**
      * reverses the rotation direction of the motor
      */
-    void reverse();
+    void reverse() { reverseRotation = true; }
 
     /**
      * the normal rotation direction of the motor
      */
-    void forward();
+    void forward() { reverseRotation = false; }
 
     /**
      * checks if the motor is rotating in the opposite direction
      * @return rotation reversed
      */
-    bool isReverse();
+    bool isReverse() { return reverseRotation; }
+
+    /**
+     * enables the motor to be able to rotate
+     */
+    void start() { rotationEnabled = true; }
+
+    /**
+     * disables the motor from being able to rotate
+     */
+    void stop() { rotationEnabled = false; }
 
     /**
      * checks if the motor can turn
      * @return motor can turn
      */
-    bool isRotationEnabled();
-
-    /**
-     * enables the motor to be able to rotate
-     */
-    void start();
-
-    /**
-     * disables the motor from being able to rotate
-     */
-    void stop();
+    bool isRotationEnabled() { return rotationEnabled; }
 
     /**
      * set the power of the motor
@@ -211,25 +211,25 @@ public:
      * get the power of the motor
      * @return motor power
      */
-    int getPower();
+    int getPower() { return power; }
 
     /**
      * get the absolute min power of the motor
      * @return motor min power
      */
-    int getAbsMinPower();
+    int getAbsMinPower() { return absMinPower; }
 
     /**
      * get the absolute max power of the motor
      * @return motor max ower
      */
-    int getAbsMaxPower();
+    int getAbsMaxPower() { return absMaxPower; }
 
     /**
      * get the shutdown power of the motor
      * @return motor shutdown power
      */
-    int getShutdownPower();
+    int getShutdownPower() { return shutdownPower; }
 
     /**
      * rotating the motor at the power level saved at that time
