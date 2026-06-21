@@ -255,6 +255,11 @@ public:
     /**
      * prints power vars in the Serial Monitor
      */
+    void debugAllPower(int inputPower);
+
+    /**
+     * prints motor power vars in the Serial Monitor
+     */
     void debugPower();
 
     /**
