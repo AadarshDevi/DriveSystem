@@ -110,6 +110,9 @@ void RawMotor::run() {
     // todo code
 }
 
+void RawMotor::shutdown() {
+    // todo code
+}
 
 void RawMotor::info() {
     if (!enableDebug) return;
