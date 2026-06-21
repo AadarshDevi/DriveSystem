@@ -42,11 +42,12 @@ public:
      * @param new_shutdownPower the safe power level that is used when something with the motor goes wrong
      * @param new_showDebug enables the class methods to print debug info in the Serial Monitor
      */
-    RawMotor(uint8_t new_pinPWM, uint8_t new_pinIN1, uint8_t new_pinIN2,
-             bool new_pinIN1Enabled, bool new_pinIN2Enabled,
-             bool new_reverseRotation, bool new_rotationEnabled,
-             int new_power, int new_absMinPower, int new_absMaxPower, int new_shutdownPower,
-             bool new_showDebug
+    RawMotor(
+        uint8_t new_pinPWM, uint8_t new_pinIN1, uint8_t new_pinIN2,
+        bool new_pinIN1Enabled, bool new_pinIN2Enabled,
+        bool new_reverseRotation, bool new_rotationEnabled,
+        int new_power, int new_absMinPower, int new_absMaxPower, int new_shutdownPower,
+        bool new_showDebug
     );
 
     /**
