@@ -154,12 +154,12 @@ public:
     /**
      * reverses the rotation direction of the motor
      */
-    void reverse() { reverseRotation = true; }
+    void reverse(); // fixme the IN pins' labels
 
     /**
      * the normal rotation direction of the motor
      */
-    void forward() { reverseRotation = false; }
+    void forward(); // fixme the IN pins' labels
 
     /**
      * checks if the motor is rotating in the opposite direction
