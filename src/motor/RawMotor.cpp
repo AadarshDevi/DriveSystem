@@ -30,6 +30,7 @@ RawMotor::RawMotor(uint8_t new_pinPWM, uint8_t new_pinIN1, uint8_t new_pinIN2,
     shutdownPower = new_shutdownPower;
 
     enableDebug = new_showDebug;
+    forward();
 }
 
 RawMotor::RawMotor(
