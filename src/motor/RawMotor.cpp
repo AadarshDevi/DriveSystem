@@ -100,11 +100,13 @@ void RawMotor::setPower(int new_power) {
 void RawMotor::setAbsMinPower(int new_absMinPower) {
     if (new_absMinPower > absMaxPower) return;
     absMinPower = new_absMinPower;
+    power = (power < absMinPower) ? absMinPower : power;
 }
 
 void RawMotor::setAbsMaxPower(int new_absMaxPower) {
     if (new_absMaxPower < absMinPower) return;
     absMaxPower = new_absMaxPower;
+    power = (power > absMaxPower) ? absMaxPower : power;
 }
 
 void RawMotor::setShutdownPower(int new_shutdownPower) {
