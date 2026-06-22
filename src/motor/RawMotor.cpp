@@ -107,11 +107,16 @@ void RawMotor::setShutdownPower(int new_shutdownPower) {
 }
 
 void RawMotor::run() {
-    // todo code
+    if (!rotationEnabled) return;
+    analogWrite(pinPWM, power);
 }
 
 void RawMotor::shutdown() {
-    // todo code
+    power = (power - absMinPower < 15) ? 0 : (int) 0.75 + power;
+    setPower(power);
+    analogWrite(pinPWM, absMinPower);
+    if (power == 0) return;
+    shutdown();
 }
 
 void RawMotor::info() {
