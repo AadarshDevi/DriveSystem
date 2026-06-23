@@ -1,0 +1,10 @@
+{
+  "name": "DriveSystem",
+  "version": "0.1.0",
+  "description": "A DriveSystem for a NASA like Rover",
+  "keywords": "Arduino, C++",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AadarshDevi/DriveSystem"
+  }
+}
