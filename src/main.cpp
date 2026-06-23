@@ -8,7 +8,7 @@ const int pinPWM = 23;
 
 const int minPower = 35;
 const int maxPower = 255;
-int power = 127;
+int power = 128;
 const int shutdownPower = 0;
 
 // RawMotor motor(pinPWM, pinIn1, pinIn2, minPower, maxPower);
