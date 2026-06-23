@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#include "../include/motor/RawMotor.h"
+#include "../lib/DriveSystem/include/motor/RawMotor.h"
 
 const int pinIn1 = 21;
 const int pinIn2 = 22;
@@ -8,7 +8,7 @@ const int pinPWM = 23;
 
 const int minPower = 35;
 const int maxPower = 255;
-int power = 128;
+int power = 255;
 const int shutdownPower = 0;
 
 // RawMotor motor(pinPWM, pinIn1, pinIn2, minPower, maxPower);
