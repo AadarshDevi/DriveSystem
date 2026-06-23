@@ -2,7 +2,7 @@
 // Created by CryosArtic on 6/20/2026.
 //
 
-#include "RawMotor.h"
+#include "../../include/motor/RawMotor.h"
 
 RawMotor::RawMotor(uint8_t new_pinPWM, uint8_t new_pinIN1, uint8_t new_pinIN2,
                    bool new_pinIN1Enabled, bool new_pinIN2Enabled,
@@ -134,7 +134,7 @@ void RawMotor::forward() {
 }
 
 
-void RawMotor::run() {
+void RawMotor::run() const {
     if (!rotationEnabled) return;
     analogWrite(pinPWM, power);
 }
@@ -148,29 +148,29 @@ void RawMotor::shutdown() {
     }
 }
 
-void RawMotor::info() {
+void RawMotor::info() const {
     if (!enableDebug) return;
     debugPins();
     debugMovement();
     debugPower();
 }
 
-void RawMotor::debugAllPower(int inputPower) {
+void RawMotor::debugAllPower(const int inputPower) const {
     if (!enableDebug) return;
     Serial.printf("Input:%d Motor:%d Min:%d Max:%d\r\n", inputPower, power, absMinPower, absMaxPower);
 }
 
-void RawMotor::debugPower() {
+void RawMotor::debugPower() const {
     if (!enableDebug) return;
     Serial.printf("Power:%d Min:%d Max:%d\r\n", power, absMinPower, absMaxPower);
 }
 
-void RawMotor::debugPins() {
+void RawMotor::debugPins() const {
     if (!enableDebug) return;
     Serial.printf("PWM:%d IN1:%d IN2:%d\r\n", pinPWM, pinIN1, pinIN2);
 }
 
-void RawMotor::debugMovement() {
+void RawMotor::debugMovement() const {
     if (!enableDebug) return;
     Serial.printf("Rotation:%d Reverse:%d\r\n", rotationEnabled, reverseRotation);
 }
