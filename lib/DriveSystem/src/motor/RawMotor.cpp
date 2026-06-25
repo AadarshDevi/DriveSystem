@@ -4,11 +4,12 @@
 
 #include "../../include/motor/RawMotor.h"
 
-RawMotor::RawMotor(uint8_t new_pinPWM, uint8_t new_pinIN1, uint8_t new_pinIN2,
-                   bool new_pinIN1Enabled, bool new_pinIN2Enabled,
-                   bool new_reverseRotation, bool new_rotationEnabled,
-                   int new_power, int new_absMinPower, int new_absMaxPower, int new_shutdownPower,
-                   bool new_showDebug
+RawMotor::RawMotor(
+    uint8_t new_pinPWM, uint8_t new_pinIN1, uint8_t new_pinIN2,
+    bool new_pinIN1Enabled, bool new_pinIN2Enabled,
+    bool new_reverseRotation, bool new_rotationEnabled,
+    int new_power, int new_absMinPower, int new_absMaxPower, int new_shutdownPower,
+    bool new_showDebug
 ) {
     pinPWM = new_pinPWM;
     pinIN1 = new_pinIN1;
