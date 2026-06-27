@@ -1,23 +1,64 @@
 #include <Arduino.h>
+#include <vector>
 
 #include "../lib/DriveSystem/include/motor/RawMotor.h"
+#include "drive/DifferentialDrive.h"
 
-const int pinIn1 = 21;
-const int pinIn2 = 22;
-const int pinPWM = 23;
-
+int power = 128;
 const int minPower = 35;
 const int maxPower = 255;
-int power = 255;
 const int shutdownPower = 0;
 
-RawMotor motor(pinPWM, pinIn1, pinIn2, power, minPower, maxPower, shutdownPower);
+std::vector<std::vector<int> > pinInput{
+    {25, 12, 27}, // l-ctrl
+    {14, 4, 21}, // l-drive
+    {26, 32, 33}, // r-ctrl
+    {13, 22, 23} // r-drive
+};
+
+std::vector<int> powerInput{
+    127, // left control
+    100, // left drive
+    127, // right control
+    100, // right drive
+};
+
+int powerRangeInput[3] = {
+    35, // min
+    255, // max
+    0 // shutdown
+};
+
+DifferentialDrive dd1(pinInput, power, minPower, maxPower, shutdownPower);
+DifferentialDrive dd2(pinInput, powerInput, minPower, maxPower, shutdownPower);
+DifferentialDrive dd3(pinInput, powerInput, powerRangeInput);
+DifferentialDrive dd4(pinInput, power, powerRangeInput);
+
+RawMotor left_control(25, 12, 27, power, minPower, maxPower, shutdownPower);
+RawMotor right_control(26, 32, 33, power, minPower, maxPower, shutdownPower);
+
+RawMotor left_drive(14, 4, 21, power, minPower, maxPower, shutdownPower);
+RawMotor right_drive(13, 22, 23, power, minPower, maxPower, shutdownPower);
 
 void setup() {
     Serial.begin(115200);
-    motor.debug(true);
-    motor.setPower(127);
-    motor.start();
+
+    left_control.debug(true);
+    left_control.setPower(power);
+    left_control.start();
+
+    left_drive.debug(true);
+    left_drive.setPower(power);
+    left_drive.start();
+
+    right_control.debug(true);
+    right_control.setPower(power);
+    right_control.start();
+
+    right_drive.debug(true);
+    right_drive.setPower(power);
+    right_drive.start();
+
     delay(10000);
 }
 
@@ -29,24 +70,41 @@ void loop() {
         if (cmd.length() > 0) {
             if (cmd.startsWith("--power")) {
                 power = cmd.substring(cmd.indexOf("=") + 1).toInt();
-                motor.setPower(power);
+                left_control.setPower(power);
+                left_drive.setPower(power);
+                right_control.setPower(power);
+                right_drive.setPower(power);
             } else if (cmd.startsWith("--min-power")) {
                 int powerInput = cmd.substring(cmd.indexOf("=") + 1).toInt();
-                motor.setAbsMinPower(powerInput);
+                left_control.setAbsMinPower(powerInput);
+                left_drive.setAbsMinPower(powerInput);
+                right_control.setAbsMinPower(powerInput);
+                right_drive.setAbsMinPower(powerInput);
             } else if (cmd.startsWith("--max-power")) {
                 int powerInput = cmd.substring(cmd.indexOf("=") + 1).toInt();
-                motor.setAbsMaxPower(powerInput);
+                left_control.setAbsMaxPower(powerInput);
+                left_drive.setAbsMaxPower(powerInput);
+                right_control.setAbsMaxPower(powerInput);
+                right_drive.setAbsMaxPower(powerInput);
             } else if (cmd == "--shutdown") {
-                motor.shutdown();
+                left_control.shutdown();
+                left_drive.shutdown();
+                right_control.shutdown();
+                right_drive.shutdown();
                 delay(200);
-                for (;;) {
-                    delay(1000);
-                }
             }
         }
     }
-    motor.run();
-    motor.debugAllPower(power);
+
+    left_control.run();
+    left_drive.run();
+    right_control.run();
+    right_drive.run();
+
+    left_control.debugAllPower(power);
+    left_drive.debugAllPower(power);
+    right_control.debugAllPower(power);
+    right_drive.debugAllPower(power);
     delay(200);
 }
 
