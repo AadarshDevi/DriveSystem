@@ -3,17 +3,19 @@
 
 #include "../lib/DriveSystem/include/motor/RawMotor.h"
 #include "drive/DifferentialDrive.h"
+#include "../lib/DriveSystem/include/board/Microcontroller.h"
+#include "powertrain/DifferentialRoverDrive.h"
 
-int power = 128;
-const int minPower = 35;
-const int maxPower = 255;
-const int shutdownPower = 0;
+int power = 0;
+constexpr int absMinPower = 0;
+constexpr int absMaxPower = 255;
+constexpr int shutdownPower = 0;
 
 std::vector<std::vector<int> > pinInput{
+    {26, 32, 33}, // r-ctrl
+    {13, 22, 23}, // r-drive
     {25, 12, 27}, // l-ctrl
     {14, 4, 21}, // l-drive
-    {26, 32, 33}, // r-ctrl
-    {13, 22, 23} // r-drive
 };
 
 std::vector<int> powerInput{
@@ -29,16 +31,13 @@ int powerRangeInput[3] = {
     0 // shutdown
 };
 
-DifferentialDrive dd1(pinInput, power, minPower, maxPower, shutdownPower);
-DifferentialDrive dd2(pinInput, powerInput, minPower, maxPower, shutdownPower);
-DifferentialDrive dd3(pinInput, powerInput, powerRangeInput);
-DifferentialDrive dd4(pinInput, power, powerRangeInput);
+//DifferentialRoverDrive drd(4, pinInput, powerInput);
 
-RawMotor left_control(25, 12, 27, power, minPower, maxPower, shutdownPower);
-RawMotor right_control(26, 32, 33, power, minPower, maxPower, shutdownPower);
+RawMotor left_control(25, 27, 12, power, absMinPower, absMaxPower, shutdownPower);
+RawMotor right_control(26, 33, 32, power, absMinPower, absMaxPower, shutdownPower);
 
-RawMotor left_drive(14, 4, 21, power, minPower, maxPower, shutdownPower);
-RawMotor right_drive(13, 22, 23, power, minPower, maxPower, shutdownPower);
+RawMotor left_drive(14, 21, 4, power, absMinPower, absMaxPower, shutdownPower);
+RawMotor right_drive(13, 23, 22, power, absMinPower, absMaxPower, shutdownPower);
 
 void setup() {
     Serial.begin(115200);
@@ -53,13 +52,15 @@ void setup() {
 
     right_control.debug(true);
     right_control.setPower(power);
+    right_control.reverse();
     right_control.start();
 
     right_drive.debug(true);
     right_drive.setPower(power);
+    right_drive.reverse();
     right_drive.start();
 
-    delay(10000);
+    delay(10000); // 10 sec
 }
 
 void loop() {
@@ -87,10 +88,20 @@ void loop() {
                 right_control.setAbsMaxPower(powerInput);
                 right_drive.setAbsMaxPower(powerInput);
             } else if (cmd == "--shutdown") {
-                left_control.shutdown();
-                left_drive.shutdown();
-                right_control.shutdown();
-                right_drive.shutdown();
+                while (power > shutdownPower) {
+                    power = (power < (absMaxPower * 0.05)) ? shutdownPower : power * 0.75;
+
+                    left_control.powerVal(power);
+                    left_drive.powerVal(power);
+                    right_control.powerVal(power);
+                    right_drive.powerVal(power);
+
+                    left_control.run();
+                    left_drive.run();
+                    right_control.run();
+                    right_drive.run();
+                    delay(200);
+                }
                 delay(200);
             }
         }
@@ -105,6 +116,7 @@ void loop() {
     left_drive.debugAllPower(power);
     right_control.debugAllPower(power);
     right_drive.debugAllPower(power);
+
     delay(200);
 }
 
