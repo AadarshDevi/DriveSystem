@@ -1,37 +1,11 @@
 #include <Arduino.h>
-#include <vector>
 
 #include "../lib/DriveSystem/include/motor/RawMotor.h"
-#include "drive/DifferentialDrive.h"
-#include "../lib/DriveSystem/include/board/Microcontroller.h"
-#include "powertrain/DifferentialRoverDrive.h"
 
 int power = 0;
 constexpr int absMinPower = 0;
 constexpr int absMaxPower = 255;
 constexpr int shutdownPower = 0;
-
-std::vector<std::vector<int> > pinInput{
-    {26, 32, 33}, // r-ctrl
-    {13, 22, 23}, // r-drive
-    {25, 12, 27}, // l-ctrl
-    {14, 4, 21}, // l-drive
-};
-
-std::vector<int> powerInput{
-    127, // left control
-    100, // left drive
-    127, // right control
-    100, // right drive
-};
-
-int powerRangeInput[3] = {
-    35, // min
-    255, // max
-    0 // shutdown
-};
-
-//DifferentialRoverDrive drd(4, pinInput, powerInput);
 
 RawMotor left_control(25, 27, 12, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor right_control(26, 33, 32, power, absMinPower, absMaxPower, shutdownPower);
