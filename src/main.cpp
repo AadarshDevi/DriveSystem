@@ -392,3 +392,6 @@ void orient(void *pvParameters) {
 //         vTaskDelay(pdMS_TO_TICKS(10));
 //     }
 // }
+void loop() {
+    vTaskDelete(nullptr);
+}
