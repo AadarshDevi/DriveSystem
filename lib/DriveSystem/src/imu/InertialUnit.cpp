@@ -176,3 +176,7 @@ bool InertialUnit::ready() const {
 void InertialUnit::setBaseOrientation() {
     base_orientation = getOrientation();
 }
+
+uint8_t *InertialUnit::get_buffer() {
+    return fifo_buffer;
+}
