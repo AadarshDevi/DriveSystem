@@ -177,6 +177,9 @@ void InertialUnit::setBaseOrientation() {
     base_orientation = getOrientation();
 }
 
+MPU6050 InertialUnit::get_mpu() const {
+    return mpu;
+}
 uint8_t *InertialUnit::get_buffer() {
     return fifo_buffer;
 }
