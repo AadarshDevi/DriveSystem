@@ -143,16 +143,16 @@
 #include "imu/InertialUnit.h"
 
 // System
-SystemMode system_mode = SystemMode::GUIDED;
-DriveMode drive_mode = DriveMode::SINGLE_TARGET;
+static SystemMode system_mode = SystemMode::GUIDED;
+static DriveMode drive_mode = DriveMode::SINGLE_TARGET;
 
 // System > Enabler
-bool mpu_working = false;
-bool wheel_encoder_working = false;
+static bool mpu_working = false;
+static bool wheel_encoder_working = false;
 
 // System > Drive
-int dist_to_travel = 0;
-int dist_travelled = 0;
+static int dist_to_travel = 0;
+static int dist_travelled = 0;
 
 // System > Orientation
 typedef struct {
