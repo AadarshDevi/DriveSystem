@@ -234,7 +234,7 @@ void setup() {
 }
 
 void orient(void *pvParameters) {
-    InertialUnit imu = *static_cast<InertialUnit *>(pvParameters);
+    InertialUnit &imu = *static_cast<InertialUnit *>(pvParameters);
 
     // Ready and compute orientation
     Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
