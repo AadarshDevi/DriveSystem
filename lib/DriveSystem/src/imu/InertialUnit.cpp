@@ -160,15 +160,17 @@ void InertialUnit::run() {
         }
 
         // Compute 4D Orientation
-        mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
-        mpu.dmpGetGravity(&gravity, &quaternion);
-        mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+        // mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+        // mpu.dmpGetGravity(&gravity, &quaternion);
+        // mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+        //
+        // // Compute 3D Orientation from 4D Orientation
+        // // Convert rad to deg
+        // orientation.yaw = ypr[0] * 180.0f / M_PI;
+        // orientation.pitch = ypr[1] * 180.0f / M_PI;
+        // orientation.roll = ypr[2] * 180.0f / M_PI;
 
-        // Compute 3D Orientation from 4D Orientation
-        // Convert rad to deg
-        orientation.yaw = ypr[0] * 180.0f / M_PI;
-        orientation.pitch = ypr[1] * 180.0f / M_PI;
-        orientation.roll = ypr[2] * 180.0f / M_PI;
+        orientation = getOrientation();
 
         current_orientation.roll = orientation.roll - base_orientation.roll;
         current_orientation.pitch = orientation.pitch - base_orientation.pitch;
