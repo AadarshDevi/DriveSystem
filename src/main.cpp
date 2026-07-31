@@ -208,4 +208,13 @@ void imu(void *pvParameters) {
     Serial.println("[Before] Initializing Wire");
     Wire.begin(I2C_SCL_PIN, I2C_SDA_PIN, 1E5); // 1E5 = 100,000 or 100kHz to steadily upload code
     Serial.println("[After] Wire Initialized");
+
+    // Initialize IMU
+    Serial.println("[Before] Initializing MPU6050");
+    mpu.initialize();
+    if (!mpu.testConnection()) {
+        Serial.println("[Error] MPU6050 Connection Failed");
+        vTaskDelete(NULL);
+    }
+    Serial.println("[After] MPU6050 Initialized");
 }
