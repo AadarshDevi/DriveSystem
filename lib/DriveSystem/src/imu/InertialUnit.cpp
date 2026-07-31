@@ -14,6 +14,16 @@ MPU6050 mpu;
 Orientation_t base_orientation; // = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
 Orientation_t current_orientation; // = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // continuously set
 
+bool dmp_ready = false; // on board computer to do math for orientation
+int packet_size;
+uint8_t fifo_buffer[64];
+
+Quaternion quaternion;
+VectorFloat gravity;
+float ypr[3];
+
+bool imu_usable = false;
+
 void InertialUnit::reset() {
     Serial.println("[Before] Resetting MPU6050");
     mpu.setXAccelOffset(0);
