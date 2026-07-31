@@ -134,9 +134,13 @@
 //     delay(200);
 // }
 
-#include <Arduino.h>
-#include <motor/RawMotor.h>
-#include <freertos/FreeRTOS.h>
+#include <Arduino.h>                        // Arduino Lib
+#include <motor/RawMotor.h>                 // Custom Motor
+#include <freertos/FreeRTOS.h>              // Parallel Processing
+#include <MPU6050_6Axis_MotionApps20.h>     // MPU-6050 Lib
+#include <Wire.h>                           // I2C Hardware Driver
+#include <I2Cdev.h>                         // I2C Auto Transmission Layer aka Wrapper
+#include <SystemMode.h>
 
 int power = 128; // motor power
 constexpr int absMinPower = 50; // min power limit
