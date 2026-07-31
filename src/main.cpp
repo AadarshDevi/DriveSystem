@@ -151,6 +151,8 @@ RawMotor right_mechanum(14, 4, 19, power, absMinPower, absMaxPower, shutdownPowe
 RawMotor left_omnidir(12, 2, 18, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor right_omnidir(13, 15, 26, power, absMinPower, absMaxPower, shutdownPower);
 
+void coords(void *pvParameters);
+
 void setup() {
 }
 
