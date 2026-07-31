@@ -58,6 +58,8 @@ public:
     bool ready();
 
     void setBaseOrientation();
+    Orientation_t base_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+    Orientation_t current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
 };
 
 

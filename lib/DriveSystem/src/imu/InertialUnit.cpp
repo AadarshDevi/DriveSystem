@@ -29,10 +29,6 @@ float ypr[3];
 bool imu_usable = false;
 
 InertialUnit::InertialUnit(int i2c_scl_pin, int i2c_sda_pin) {
-    // Set vars
-    base_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
-    current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
-
     // Initialize I2C
     Serial.println("[Before] Initializing Wire");
     Wire.begin(i2c_scl_pin, i2c_sda_pin, static_cast<int>(1E5)); // 1E5 = 100,000 or 100kHz to steadily upload code
