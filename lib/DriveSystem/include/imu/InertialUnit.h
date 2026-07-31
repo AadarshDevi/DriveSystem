@@ -7,19 +7,19 @@
 
 #include <cstdint>
 
-class InertialUnit {
-public:
-    /*
-     Object to store the orientation
-     */
-    typedef struct {
-        float roll;
-        float pitch;
-        float yaw;
-    } Orientation_t;
-#include "MPU6050_6Axis_MotionApps612.h"
 #include "MPU6050_6Axis_MotionApps612.h"
 
+/*
+ Object to store the orientation
+ */
+typedef struct {
+    float roll;
+    float pitch;
+    float yaw;
+} Orientation_t;
+
+class InertialUnit {
+public:
     /*
      Constructor
      */
