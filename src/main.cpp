@@ -207,9 +207,9 @@ void imu(void *pvParameters);
 
 void coords(void *pvParameters);
 
-void orient(void *pvParameters);
+static void orient(void *pvParameters);
 
-void printOrientation(void *pvParameters);
+static void printOrientation(void *pvParameters);
 
 void setup() {
     Serial.begin(115200);
