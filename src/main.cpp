@@ -235,4 +235,15 @@ void imu(void *pvParameters) {
     mpu.PrintActiveOffsets();
     Serial.println("[After] MPU6050 Calibrated");
 
+    // Initialize Onboard DMP
+    Serial.println("[Before] Initializing DMP");
+    int dev_status = mpu.dmpInitialize();
+    if (dev_status != 0) {
+        Serial.println("[Error] DMP Initialization Failed");
+        vTaskDelete(NULL);
+    }
+    mpu.setDMPEnabled(true); // enable mpu's dmp
+    packet_size = mpu.dmpGetFIFOPacketSize(); // dmp packet size
+    dmp_ready = true; // dmp is ready to be used
+
 }
