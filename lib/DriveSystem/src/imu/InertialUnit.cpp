@@ -107,7 +107,7 @@ void InertialUnit::stabilize() {
     Serial.println("[After] MPU6050 Stabilized");
 }
 
-InertialUnit::Orientation_t InertialUnit::getOrientation() {
+Orientation_t InertialUnit::getOrientation() {
     Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
 
     // Compute 4D Orientation
