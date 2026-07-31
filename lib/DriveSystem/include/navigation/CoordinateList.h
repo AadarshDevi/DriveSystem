@@ -19,7 +19,7 @@ typedef struct {
 
 #define SIZE 15
 
-class Navigation {
+class CoordinateList {
 private:
     Coordinate_t target_coords[SIZE];
     int index = 0;
