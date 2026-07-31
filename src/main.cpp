@@ -217,4 +217,15 @@ void imu(void *pvParameters) {
         vTaskDelete(NULL);
     }
     Serial.println("[After] MPU6050 Initialized");
+
+    // IMU Reset
+    Serial.println("[Before] Resetting MPU6050");
+    mpu.setXAccelOffset(0);
+    mpu.setYAccelOffset(0);
+    mpu.setZAccelOffset(0);
+    mpu.setXGyroOffset(0);
+    mpu.setYGyroOffset(0);
+    mpu.setZGyroOffset(0);
+    Serial.println("[After] MPU6050 Reset");
+
 }
