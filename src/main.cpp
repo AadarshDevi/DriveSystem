@@ -251,4 +251,9 @@ void imu(void *pvParameters) {
     // so i2c can now be faster
     Wire.setClock(static_cast<int>(4E5)); // 4E5 = 400,000 kHz
     Serial.println("[After] DMP Initialized");
+
+    float roll = 0.0;
+    float pitch = 0.0;
+    float yaw = 0.0;
+
 }
