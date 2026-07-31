@@ -163,6 +163,10 @@ RawMotor right_omnidir(13, 26, 15, power, absMinPower, absMaxPower, shutdownPowe
 MPU6050 mpu;
 
 // MPU-6050 > DMP
+bool dmp_ready = false; // on board computer to do math for orientation
+int packet_size;
+int fifo_buffer[64];
+
 // MPU-6050 > Orientation
 void rotateLeft(void *pvParameters);
 
