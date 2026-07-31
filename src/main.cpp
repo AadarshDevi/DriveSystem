@@ -256,4 +256,6 @@ void imu(void *pvParameters) {
     float pitch = 0.0;
     float yaw = 0.0;
 
+    Serial.println("Reading Orientation");
+            Serial.printf("Roll: %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
 }
