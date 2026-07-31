@@ -166,7 +166,7 @@ Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; /
 // Motor > Power
 int power = 128; // motor power
 constexpr int absMinPower = 50; // min power limit
-constexpr int absMaxPower = 255; // max power limit
+constexpr int absMaxPower = 175; // max power limit
 constexpr int shutdownPower = 0; // shutdown motor power - for emergency uses
 
 // Motor
