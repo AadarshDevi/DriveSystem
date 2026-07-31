@@ -157,6 +157,7 @@ struct MutexGuard {
             xSemaphoreGive(mutex);
     }
 
+    explicit operator bool() const { return locked; }
 };
 
 // System
