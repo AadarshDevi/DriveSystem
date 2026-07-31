@@ -24,6 +24,38 @@ float ypr[3];
 
 bool imu_usable = false;
 
+InertialUnit::InertialUnit(int i2c_scl_pin, int i2c_sda_pin) {
+    // Set vars
+    base_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+    current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+
+    // Initialize I2C
+    Serial.println("[Before] Initializing Wire");
+    Wire.begin(i2c_scl_pin, i2c_sda_pin, static_cast<int>(1E5)); // 1E5 = 100,000 or 100kHz to steadily upload code
+    Serial.println("[After] Wire Initialized");
+
+    // Initialize MPU6050
+    Serial.println("[Before] Initializing MPU6050");
+    mpu.initialize();
+    if (!mpu.testConnection()) {
+        Serial.println("[Error] MPU6050 Connection Failed");
+        vTaskDelete(NULL);
+    }
+    Serial.println("[After] MPU6050 Initialized");
+
+    reset();
+    calibrate(6);
+    dmp();
+
+    // DMP is ready to start doing calculations really quickly.
+    // so i2c can now be faster
+    Wire.setClock(static_cast<int>(4E5)); // 4E5 = 400,000 kHz
+    Serial.println("[After] DMP Initialized");
+
+    stabilize();
+    imu_usable = true;
+}
+
 void InertialUnit::reset() {
     Serial.println("[Before] Resetting MPU6050");
     mpu.setXAccelOffset(0);
