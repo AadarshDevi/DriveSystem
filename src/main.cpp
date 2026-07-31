@@ -144,11 +144,17 @@
 struct MutexGuard {
     SemaphoreHandle_t mutex;
     bool locked;
+
     MutexGuard(
         const SemaphoreHandle_t mutex,
         const TickType_t timeout = pdMS_TO_TICKS(MUTEX_TIMEOUT_MS)
     ) : mutex(mutex) {
         locked = (xSemaphoreTake(mutex, timeout) == pdTRUE);
+    }
+
+    ~MutexGuard() {
+        if (locked)
+            xSemaphoreGive(mutex);
     }
 
 };
