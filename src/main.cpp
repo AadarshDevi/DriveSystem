@@ -324,7 +324,7 @@ void imu(void *pvParameters) {
     base_orientation.yaw = ypr[0] * 180.0f / M_PI;
     base_orientation.pitch = ypr[1] * 180.0f / M_PI;
     base_orientation.roll = ypr[2] * 180.0f / M_PI;
-
+    Serial.println("[After] MPU6050 Stabilized");
 
     // Ready and compute orientation
     float roll = 0.0;
