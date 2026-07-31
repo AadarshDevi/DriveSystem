@@ -273,6 +273,7 @@ void imu(void *pvParameters) {
     Serial.println("[After] DMP Initialized");
 
     // Stabilize MPU605
+    Serial.println("[Before] Stabilizing MPU6050");
     Orientation_t previous = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
     Orientation_t current;
     constexpr int MAX_SAMPLES = 40;
