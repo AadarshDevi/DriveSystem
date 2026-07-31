@@ -139,6 +139,8 @@
 #include <DriveMode.h>                      // Type of Driving
 
 // FreeRTOS
+SemaphoreHandle_t mutex;
+
 #define MUTEX_TIMEOUT_MS 10
 
 struct MutexGuard {
