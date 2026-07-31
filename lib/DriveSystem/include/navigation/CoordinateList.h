@@ -21,7 +21,7 @@ typedef struct {
 
 class CoordinateList {
 private:
-    Coordinate_t target_coords[SIZE];
+    const Coordinate_t target_coords[SIZE];
     int index = 0;
 
 public:
