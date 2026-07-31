@@ -3,3 +3,8 @@
 //
 
 #include "../../include/imu/InertialUnit.h"
+
+#include <HardwareSerial.h>
+#include <Wire.h>
+
+#include "MPU6050_6Axis_MotionApps612.h"
