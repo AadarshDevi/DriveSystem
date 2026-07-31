@@ -272,6 +272,8 @@ void imu(void *pvParameters) {
     Wire.setClock(static_cast<int>(4E5)); // 4E5 = 400,000 kHz
     Serial.println("[After] DMP Initialized");
 
+    Orientation_t previous = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+    Orientation_t current;
     float roll = 0.0;
     float pitch = 0.0;
     float yaw = 0.0;
