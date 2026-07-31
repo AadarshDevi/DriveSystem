@@ -239,6 +239,10 @@ void orient(void *pvParameters) {
     // Ready and compute orientation
     Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
 
+    float roll = 0.0f;
+    float pitch = 0.0f;
+    float yaw = 0.0f;
+
     Serial.println("[Log] Reading Orientation");
     uint8_t *buffer = imu.get_buffer();
     for (;;) {
@@ -249,16 +253,23 @@ void orient(void *pvParameters) {
 
         orientation = imu.getOrientation();
 
-        current_orientation.roll = orientation.roll - imu.get_base_orientation().roll;
-        current_orientation.pitch = orientation.pitch - imu.get_base_orientation().pitch;
-        current_orientation.yaw = orientation.yaw - imu.get_base_orientation().yaw;
+        roll = orientation.roll - imu.get_base_orientation().roll;
+        pitch = orientation.pitch - imu.get_base_orientation().pitch;
+        yaw = orientation.yaw - imu.get_base_orientation().yaw;
 
-        Serial.printf(
-            "Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n",
-            current_orientation.roll,
-            current_orientation.pitch,
-            current_orientation.yaw
-        );
+        if (xSemaphoreTake(mutex, pdMS_TO_TICKS(MUTEX_TIMEOUT_MS)) == pdTRUE) {
+            current_orientation.roll = roll;
+            current_orientation.pitch = pitch;
+            current_orientation.yaw = yaw;
+            xSemaphoreGive(mutex);
+        }
+
+        // Serial.printf(
+        //     "Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n",
+        //     current_orientation.roll,
+        //     current_orientation.pitch,
+        //     current_orientation.yaw
+        // );
 
         // ~100Hz
         vTaskDelay(pdMS_TO_TICKS(10));
