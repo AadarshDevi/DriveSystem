@@ -158,6 +158,10 @@ RawMotor left_omnidir(14, 19, 2, power, absMinPower, absMaxPower, shutdownPower)
 RawMotor right_omnidir(13, 26, 15, power, absMinPower, absMaxPower, shutdownPower);
 
 // MPU-6050
+#define I2C_SCL_PIN 21
+#define I2C_SDA_PIN 22
+MPU6050 mpu;
+
 // MPU-6050 > DMP
 // MPU-6050 > Orientation
 void rotateLeft(void *pvParameters);
