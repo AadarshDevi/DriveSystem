@@ -228,4 +228,11 @@ void imu(void *pvParameters) {
     mpu.setZGyroOffset(0);
     Serial.println("[After] MPU6050 Reset");
 
+    // IMU Auto Calibration
+    Serial.println("[Before] Calibrating MPU6050");
+    mpu.CalibrateAccel(6);
+    mpu.CalibrateGyro(6);
+    mpu.PrintActiveOffsets();
+    Serial.println("[After] MPU6050 Calibrated");
+
 }
