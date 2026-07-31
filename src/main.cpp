@@ -159,6 +159,7 @@ typedef struct {
     float yaw;
 } Orientation_t;
 
+Orientation_t base_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
 Orientation_t current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // continuously set
 Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
 
