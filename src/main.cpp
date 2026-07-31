@@ -142,6 +142,10 @@
 // System
 SystemMode system_mode = SystemMode::GUIDED;
 
+// System > Enabler
+bool mpu_working = false;
+bool wheel_encoder_working = false;
+
 // Motor > Power
 int power = 128; // motor power
 constexpr int absMinPower = 50; // min power limit
