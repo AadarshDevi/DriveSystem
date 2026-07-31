@@ -135,6 +135,8 @@
 // }
 
 #include <Arduino.h>
+#include <motor/RawMotor.h>
+#include <freertos/FreeRTOS.h>
 
 void rotateLeft(void *pvParameters);
 
