@@ -306,7 +306,9 @@ void printOrientation(void *pvParameters) {
 
     for (;;) {
         print = false;
-        if (xSemaphoreTake(mutex, pdMS_TO_TICKS(MUTEX_TIMEOUT_MS)) == pdTRUE) {
+        if (MutexGuard lock{
+            mutex
+        }) {
             roll = current_orientation.roll;
             pitch = current_orientation.pitch;
             yaw = current_orientation.yaw;
