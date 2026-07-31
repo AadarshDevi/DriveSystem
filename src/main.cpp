@@ -193,8 +193,15 @@ void printOrientation(void *pvParameters);
 
 void setup() {
     Serial.begin(115200);
-
     delay(10000);
+
+    Serial.println("[Before] Initializing Semaphore");
+    mutex = xSemaphoreCreateMutex();
+    if (mutex == nullptr) {
+        Serial.println("[Error] Could not create mutex");
+        return;
+    }
+    Serial.println("[After] Semaphore Initialized");
 
     static InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN);
 
