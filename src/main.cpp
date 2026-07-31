@@ -276,7 +276,7 @@ void imu(void *pvParameters) {
     Serial.println("[Before] Stabilizing MPU6050");
     Orientation_t previous = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
     Orientation_t current;
-    constexpr int MAX_SAMPLES = 40;
+    constexpr int MAX_SAMPLES = 80;
     int samples = 0;
 
     vTaskDelay(pdMS_TO_TICKS(10000)); // 3 sec delay to stabilize mpu before setting up stable orientation
