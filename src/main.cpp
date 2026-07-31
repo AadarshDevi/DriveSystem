@@ -277,7 +277,9 @@ void orient(void *pvParameters) {
         pitch = orientation.pitch - imu.get_base_orientation().pitch;
         yaw = orientation.yaw - imu.get_base_orientation().yaw;
 
-        if (xSemaphoreTake(mutex, pdMS_TO_TICKS(MUTEX_TIMEOUT_MS)) == pdTRUE) {
+        if (MutexGuard lock{
+            mutex
+        }) {
             current_orientation.roll = roll;
             current_orientation.pitch = pitch;
             current_orientation.yaw = yaw;
