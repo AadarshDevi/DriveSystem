@@ -138,6 +138,11 @@
 #include <motor/RawMotor.h>
 #include <freertos/FreeRTOS.h>
 
+RawMotor left_mechanum(27, 23, 4, power, absMinPower, absMaxPower, shutdownPower);
+RawMotor right_mechanum(12, 18, 25, power, absMinPower, absMaxPower, shutdownPower);
+RawMotor left_omnidir(14, 19, 2, power, absMinPower, absMaxPower, shutdownPower);
+RawMotor right_omnidir(13, 26, 15, power, absMinPower, absMaxPower, shutdownPower);
+
 void rotateLeft(void *pvParameters);
 
 void rotateRight(void *pvParameters);
