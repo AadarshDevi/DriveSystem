@@ -140,6 +140,8 @@
 #include <SystemMode.h>
 #include <DriveMode.h>
 
+#include "imu/InertialUnit.h"
+
 // System
 SystemMode system_mode = SystemMode::GUIDED;
 DriveMode drive_mode = DriveMode::SINGLE_TARGET;
