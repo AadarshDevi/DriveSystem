@@ -136,7 +136,7 @@
 
 #include <Arduino.h>
 
-#include "../lib/DriveSystem/include/motor/RawMotor.h"
+void rotateLeft(void *pvParameters);
 
 // motor speed = 255 --> rps = 3.25
 float wheelCircumference = 81.6814089933; // cm
