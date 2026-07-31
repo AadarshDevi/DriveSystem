@@ -7,7 +7,7 @@
 
 #include <cstdint>
 
-#include "MPU6050_6Axis_MotionApps612.h"
+#include "MPU6050_6Axis_MotionApps20.h"
 
 /*
  Object to store the orientation
