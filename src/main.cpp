@@ -142,6 +142,9 @@
 #define MUTEX_TIMEOUT_MS 10
 SemaphoreHandle_t mutex;
 
+struct MutexGuard {
+};
+
 // System
 static SystemMode system_mode = SystemMode::GUIDED;
 static DriveMode drive_mode = DriveMode::SINGLE_TARGET;
