@@ -29,6 +29,10 @@ struct MutexGuard {
     explicit operator bool() const { return locked; }
 };
 
+
+// Navigation
+
+
 // System
 static SystemMode system_mode = SystemMode::GUIDED;
 static DriveMode drive_mode = DriveMode::SINGLE_TARGET;
