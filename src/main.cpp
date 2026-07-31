@@ -187,6 +187,8 @@ void imu(void *pvParameters);
 void coords(void *pvParameters);
 
 void setup() {
+    Serial.begin(115200);
+
 }
 
 void loop() {
