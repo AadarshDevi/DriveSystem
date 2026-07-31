@@ -2,8 +2,8 @@
 #include <motor/RawMotor.h>                 // Custom Motor
 #include <imu/InertialUnit.h>               // Custom IMU
 #include <MPU6050_6Axis_MotionApps20.h>     // MPU-6050 Lib
-#include <SystemMode.h>                     // Type of Data Transfer
-#include <DriveMode.h>                      // Type of Driving
+#include <system/SystemMode.h>              // Type of Data Transfer
+#include <system/DriveMode.h>               // Powertrain driving mode
 
 // FreeRTOS
 SemaphoreHandle_t mutex;
