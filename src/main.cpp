@@ -278,7 +278,7 @@ void imu(void *pvParameters) {
     constexpr int MAX_SAMPLES = 40;
     int samples = 0;
 
-    vTaskDelay(pdMS_TO_TICKS(3000)); // 3 sec delay to stabilize mpu before setting up stable orientation
+    vTaskDelay(pdMS_TO_TICKS(10000)); // 3 sec delay to stabilize mpu before setting up stable orientation
     while (samples < MAX_SAMPLES) {
         if (!mpu.dmpGetCurrentFIFOPacket(fifo_buffer)) {
             vTaskDelay(pdMS_TO_TICKS(2));
