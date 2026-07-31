@@ -27,8 +27,10 @@ private:
 public:
     void add(float x, float y, float z);
 
-    Coordinate_t getFirst() const;
+    void add(Coordinate_t coord);
+
     Coordinate_t getTarget() const;
+
     Coordinate_t getFinalTarget() const;
 
     int getSize() const { return SIZE; }
