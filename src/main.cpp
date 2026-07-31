@@ -204,6 +204,8 @@ void coords(void *pvParameters);
 void setup() {
     Serial.begin(115200);
 
+    delay(10000);
+
     xTaskCreatePinnedToCore(
         imu,
         "IMU",
