@@ -138,6 +138,11 @@
 #include <motor/RawMotor.h>
 #include <freertos/FreeRTOS.h>
 
+int power = 128; // motor power
+constexpr int absMinPower = 50; // min power limit
+constexpr int absMaxPower = 255; // max power limit
+constexpr int shutdownPower = 0; // shutdown motor power - for emergency uses
+
 RawMotor left_mechanum(27, 23, 4, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor right_mechanum(12, 18, 25, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor left_omnidir(14, 19, 2, power, absMinPower, absMaxPower, shutdownPower);
