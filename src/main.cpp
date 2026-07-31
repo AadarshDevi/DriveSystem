@@ -330,7 +330,6 @@ void imu(void *pvParameters) {
     float pitch = 0.0;
     float yaw = 0.0;
 
-    // Ready and compute orientation
     Serial.println("Reading Orientation");
     for (;;) {
         if (!(dmp_ready && mpu.dmpGetCurrentFIFOPacket(fifo_buffer))) {
