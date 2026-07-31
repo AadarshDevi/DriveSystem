@@ -300,9 +300,9 @@ void imu(void *pvParameters) {
         current.roll = ypr[2] * 180.0f / M_PI;
 
         if (
-            fabs(current.roll - previous.roll) >= 0.05f ||
-            fabs(current.pitch - previous.pitch) >= 0.05f ||
-            fabs(current.yaw - previous.yaw) >= 0.05f
+            fabs(current.roll - previous.roll) >= 0.02f ||
+            fabs(current.pitch - previous.pitch) >= 0.02f ||
+            fabs(current.yaw - previous.yaw) >= 0.02f
         ) {
             samples = 0;
             previous = current;
