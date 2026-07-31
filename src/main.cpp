@@ -140,10 +140,7 @@ void rotateLeft(void *pvParameters);
 
 void rotateRight(void *pvParameters);
 
-int power = 128;
-constexpr int absMinPower = 50;
-constexpr int absMaxPower = 255;
-constexpr int shutdownPower = 0;
+void drive(void *pvParameters);
 
 // wheel encoder sensor
 #define issmPin 34
