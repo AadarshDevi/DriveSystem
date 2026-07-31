@@ -142,6 +142,9 @@
 #include <I2Cdev.h>                         // I2C Auto Transmission Layer aka Wrapper
 #include <SystemMode.h>
 
+// System
+SystemMode system_mode = SystemMode::GUIDED;
+
 int power = 128; // motor power
 constexpr int absMinPower = 50; // min power limit
 constexpr int absMaxPower = 255; // max power limit
