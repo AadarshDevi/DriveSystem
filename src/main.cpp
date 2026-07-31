@@ -260,6 +260,11 @@ void imu(void *pvParameters) {
             mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
             mpu.dmpGetGravity(&gravity, &quaternion);
             mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+
+            yaw = ypr[0] * 180.8f / M_PI;
+            pitch = ypr[1] * 180.8f / M_PI;
+            roll = ypr[2] * 180.8f / M_PI;
+
             Serial.printf("Roll: %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
         }
 
