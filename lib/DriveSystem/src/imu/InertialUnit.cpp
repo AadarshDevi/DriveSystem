@@ -169,7 +169,7 @@ void InertialUnit::run() {
     }
 }
 
-bool InertialUnit::ready() {
+bool InertialUnit::ready() const {
     return imu_usable;
 }
 
