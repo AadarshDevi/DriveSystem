@@ -142,14 +142,7 @@ void rotateRight(void *pvParameters);
 
 void drive(void *pvParameters);
 
-// wheel encoder sensor
-#define issmPin 34
-int steps = 0;
-int oldSteps = 0;
-int counterToCm = 1;
-int temp = 0;
-float rps = 0;
-float distance = 0;
+void stop(void *pvParameters);
 
 unsigned long startTime = 0;
 unsigned long endTime = 0;
