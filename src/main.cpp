@@ -239,6 +239,46 @@ void loop() {
 }
 
 void orient(void *pvParameters) {
+    InertialUnit imu = *static_cast<InertialUnit *>(pvParameters);
+
+    // Ready and compute orientation
+    Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+
+    Serial.println("[Log] Reading Orientation");
+    uint8_t *buffer = imu.get_buffer();
+    for (;;) {
+        if (!(imu.is_dmp_ready() && imu.get_mpu().dmpGetCurrentFIFOPacket(buffer))) {
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
+
+        // Compute 4D Orientation
+        // mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+        // mpu.dmpGetGravity(&gravity, &quaternion);
+        // mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+        //
+        // // Compute 3D Orientation from 4D Orientation
+        // // Convert rad to deg
+        // orientation.yaw = ypr[0] * 180.0f / M_PI;
+        // orientation.pitch = ypr[1] * 180.0f / M_PI;
+        // orientation.roll = ypr[2] * 180.0f / M_PI;
+
+        orientation = imu.getOrientation();
+
+        current_orientation.roll = orientation.roll - imu.get_base_orientation().roll;
+        current_orientation.pitch = orientation.pitch - imu.get_base_orientation().pitch;
+        current_orientation.yaw = orientation.yaw - imu.get_base_orientation().yaw;
+
+        Serial.printf(
+            "Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n",
+            current_orientation.roll,
+            current_orientation.pitch,
+            current_orientation.yaw
+        );
+
+        // ~100Hz
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
 }
 
 // void imu(void *pvParameters) {
