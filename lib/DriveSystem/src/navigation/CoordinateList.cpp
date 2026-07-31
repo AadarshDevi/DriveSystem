@@ -3,3 +3,7 @@
 //
 
 #include "../../include/navigation/CoordinateList.h"
+
+// void CoordinateList::add(float x, float y, float z) {
+//     index
+// }
