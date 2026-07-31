@@ -221,15 +221,17 @@ void setup() {
         system_mode = GUIDED;
     }
 
-    xTaskCreatePinnedToCore(
-        orient,
-        "IMU",
-        4096,
-        NULL,
-        1,
-        NULL,
-        1
-    );
+    if (system_mode == AUTONOMOUS) {
+        xTaskCreatePinnedToCore(
+            orient,
+            "IMU",
+            4096,
+            &imu,
+            1,
+            nullptr,
+            1
+        );
+    }
 }
 
 void loop() {
