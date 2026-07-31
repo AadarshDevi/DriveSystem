@@ -264,16 +264,20 @@ void imu(void *pvParameters) {
             continue;
         }
 
+        // Compute 4D Orientation
         mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
         mpu.dmpGetGravity(&gravity, &quaternion);
         mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
 
+        // Compute 3D Orientation from 4D Orientation
+        // Convert rad to deg
         yaw = ypr[0] * 180.0f / M_PI;
         pitch = ypr[1] * 180.0f / M_PI;
         roll = ypr[2] * 180.0f / M_PI;
 
         Serial.printf("Roll: %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
 
+        // ~100Hz
         vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
