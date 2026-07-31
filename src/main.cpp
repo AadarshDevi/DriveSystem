@@ -212,7 +212,7 @@ void setup() {
     delay(10000);
 
     xTaskCreatePinnedToCore(
-        imu,
+        orient,
         "IMU",
         4096,
         NULL,
