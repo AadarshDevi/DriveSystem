@@ -233,10 +233,6 @@ void setup() {
     }
 }
 
-void loop() {
-    vTaskDelete(nullptr);
-}
-
 void orient(void *pvParameters) {
     InertialUnit imu = *static_cast<InertialUnit *>(pvParameters);
 
