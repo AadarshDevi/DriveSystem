@@ -250,6 +250,7 @@ void imu(void *pvParameters) {
     mpu.CalibrateAccel(6);
     mpu.CalibrateGyro(6);
     mpu.PrintActiveOffsets();
+    mpu.setDLPFMode(MPU6050_DLPF_BW_20); // low pass band filter
     Serial.println("[After] MPU6050 Calibrated");
 
     // Initialize Onboard DMP
