@@ -246,4 +246,8 @@ void imu(void *pvParameters) {
     packet_size = mpu.dmpGetFIFOPacketSize(); // dmp packet size
     dmp_ready = true; // dmp is ready to be used
 
+    // DMP is ready to start doing calculations really quickly.
+    // so i2c can now be faster
+    Wire.setClock(4E5); // 4E5 = 400,000 kHz
+    Serial.println("[After] DMP Initialized");
 }
