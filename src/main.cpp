@@ -317,7 +317,7 @@ void printOrientation(void *pvParameters) {
         if (print) {
             Serial.printf("Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
         }
-        vTaskDelay(pdMS_TO_TICKS(30));
+        vTaskDelay(pdMS_TO_TICKS(200)); // 100 ms for each print
     }
 }
 
