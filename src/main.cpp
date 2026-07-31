@@ -274,6 +274,8 @@ void imu(void *pvParameters) {
 
     Orientation_t previous = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
     Orientation_t current;
+    constexpr int MAX_SAMPLES = 40;
+    int samples = 0;
     float roll = 0.0;
     float pitch = 0.0;
     float yaw = 0.0;
