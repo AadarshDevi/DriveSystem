@@ -272,10 +272,60 @@ void imu(void *pvParameters) {
     Wire.setClock(static_cast<int>(4E5)); // 4E5 = 400,000 kHz
     Serial.println("[After] DMP Initialized");
 
+    // Stabilize MPU605
     Orientation_t previous = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
     Orientation_t current;
     constexpr int MAX_SAMPLES = 40;
     int samples = 0;
+
+    vTaskDelay(pdMS_TO_TICKS(3000)); // 3 sec delay to stabilize mpu before setting up stable orientation
+    while (samples < MAX_SAMPLES) {
+        if (!mpu.dmpGetCurrentFIFOPacket(fifo_buffer)) {
+            vTaskDelay(pdMS_TO_TICKS(2));
+            continue;
+        }
+
+        // Compute 4D Orientation
+        // Compute Roll Pitch
+        // Compute 3D Orientation
+        mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+        mpu.dmpGetGravity(&gravity, &quaternion);
+        mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+
+        // Compute 3D Orientation from 4D Orientation
+        // Convert rad to deg
+        current.yaw = ypr[0] * 180.0f / M_PI;
+        current.pitch = ypr[1] * 180.0f / M_PI;
+        current.roll = ypr[2] * 180.0f / M_PI;
+
+        if (
+            fabs(current.roll - previous.roll) >= 0.05f ||
+            fabs(current.pitch - previous.pitch) >= 0.05f ||
+            fabs(current.yaw - previous.yaw) >= 0.05f
+        ) {
+            samples = 0;
+            previous = current;
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
+
+        samples++;
+        previous = current;
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+
+    mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+    mpu.dmpGetGravity(&gravity, &quaternion);
+    mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+
+    // Compute 3D Orientation from 4D Orientation
+    // Convert rad to deg
+    base_orientation.yaw = ypr[0] * 180.0f / M_PI;
+    base_orientation.pitch = ypr[1] * 180.0f / M_PI;
+    base_orientation.roll = ypr[2] * 180.0f / M_PI;
+
+
+    // Ready and compute orientation
     float roll = 0.0;
     float pitch = 0.0;
     float yaw = 0.0;
