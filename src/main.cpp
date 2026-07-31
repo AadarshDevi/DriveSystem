@@ -283,7 +283,6 @@ void orient(void *pvParameters) {
             current_orientation.roll = roll;
             current_orientation.pitch = pitch;
             current_orientation.yaw = yaw;
-            xSemaphoreGive(mutex);
         }
 
         // Serial.printf(
@@ -313,7 +312,6 @@ void printOrientation(void *pvParameters) {
             pitch = current_orientation.pitch;
             yaw = current_orientation.yaw;
             print = true;
-            xSemaphoreGive(mutex);
         }
 
         if (print) {
