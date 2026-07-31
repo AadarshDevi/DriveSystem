@@ -349,7 +349,16 @@ void imu(void *pvParameters) {
         pitch = ypr[1] * 180.0f / M_PI;
         roll = ypr[2] * 180.0f / M_PI;
 
-        Serial.printf("Roll: %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
+        current_orientation.roll = roll - base_orientation.roll;
+        current_orientation.pitch = pitch - base_orientation.pitch;
+        current_orientation.yaw = yaw - base_orientation.yaw;
+
+        Serial.printf(
+            "Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n",
+            current_orientation.roll,
+            current_orientation.pitch,
+            current_orientation.yaw
+        );
 
         // ~100Hz
         vTaskDelay(pdMS_TO_TICKS(10));
