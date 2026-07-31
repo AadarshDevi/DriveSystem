@@ -213,7 +213,7 @@ void setup() {
 
     delay(10000);
 
-    InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN);
+    static InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN);
 
     if (imu.ready()) {
         system_mode = AUTONOMOUS;
