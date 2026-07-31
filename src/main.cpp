@@ -145,6 +145,11 @@ SystemMode system_mode = SystemMode::GUIDED;
 // System > Enabler
 bool mpu_working = false;
 bool wheel_encoder_working = false;
+typedef struct Orientation_t {
+    float roll;
+    float pitch;
+    float yaw;
+};
 
 // Motor > Power
 int power = 128; // motor power
