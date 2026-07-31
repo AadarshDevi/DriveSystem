@@ -119,9 +119,9 @@ Orientation_t InertialUnit::getOrientation() {
 
     // Compute 3D Orientation from 4D Orientation
     // Convert rad to deg
-    orientation.yaw = ypr[0] * 180.0f / M_PI;
-    orientation.pitch = ypr[1] * 180.0f / M_PI;
-    orientation.roll = ypr[2] * 180.0f / M_PI;
+    orientation.yaw = ypr[0] * 180.0f / static_cast<float>(M_PI);
+    orientation.pitch = ypr[1] * 180.0f / static_cast<float>(M_PI);
+    orientation.roll = ypr[2] * 180.0f / static_cast<float>(M_PI);
     return orientation;
 }
 
