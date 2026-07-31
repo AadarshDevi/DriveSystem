@@ -155,11 +155,11 @@ static int dist_to_travel = 0;
 static int dist_travelled = 0;
 
 // System > Orientation
-typedef struct {
-    float roll;
-    float pitch;
-    float yaw;
-} Orientation_t;
+// typedef struct {
+//     float roll;
+//     float pitch;
+//     float yaw;
+// } Orientation_t;
 
 Orientation_t base_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
 Orientation_t current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // continuously set
