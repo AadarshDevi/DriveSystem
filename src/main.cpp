@@ -106,9 +106,6 @@
 //     right_mechanum.debugAllPower(power);
 //     right_omnidir.debugAllPower(power);
 //
-//
-//     // todo create class
-//
 //     // wheel encoder
 //     startTime = millis();
 //     endTime = startTime + 1000;
