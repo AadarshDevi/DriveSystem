@@ -138,7 +138,9 @@
 #include <SystemMode.h>                     // Type of Data Transfer
 #include <DriveMode.h>                      // Type of Driving
 
-#include "imu/InertialUnit.h"
+// FreeRTOS
+#define MUTEX_TIMEOUT_MS 10
+SemaphoreHandle_t mutex;
 
 // System
 static SystemMode system_mode = SystemMode::GUIDED;
