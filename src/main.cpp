@@ -83,9 +83,11 @@ static void orient(void *pvParameters);
 static void printOrientation(void *pvParameters);
 
 void setup() {
+    // Set basic info
     Serial.begin(115200);
     delay(10000);
 
+    // set semaphore
     Serial.println("[Before] Initializing Semaphore");
     mutex = xSemaphoreCreateMutex();
     if (mutex == nullptr) {
@@ -94,6 +96,7 @@ void setup() {
     }
     Serial.println("[After] Semaphore Initialized");
 
+    // set imu
     static InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN);
 
     if (imu.ready()) {
