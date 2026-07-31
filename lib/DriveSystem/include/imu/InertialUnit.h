@@ -18,6 +18,7 @@ public:
         float yaw;
     } Orientation_t;
 #include "MPU6050_6Axis_MotionApps612.h"
+#include "MPU6050_6Axis_MotionApps612.h"
 
     /*
      Constructor
