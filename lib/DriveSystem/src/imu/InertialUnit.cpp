@@ -11,6 +11,9 @@
 
 MPU6050 mpu;
 
+Orientation_t base_orientation; // = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
+Orientation_t current_orientation; // = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // continuously set
+
 void InertialUnit::reset() {
     Serial.println("[Before] Resetting MPU6050");
     mpu.setXAccelOffset(0);
@@ -20,6 +23,28 @@ void InertialUnit::reset() {
     mpu.setYGyroOffset(0);
     mpu.setZGyroOffset(0);
     Serial.println("[After] MPU6050 Reset");
+}
+
+void InertialUnit::calibrate(const int loops = 6) {
+    Serial.println("[Before] Calibrating MPU6050");
+    mpu.CalibrateAccel(loops);
+    mpu.CalibrateGyro(loops);
+    mpu.PrintActiveOffsets();
+    mpu.setDLPFMode(MPU6050_DLPF_BW_20); // low pass band filter
+    Serial.println("[After] MPU6050 Calibrated");
+}
+
+void InertialUnit::dmp() {
+    // Initialize Onboard DMP
+    Serial.println("[Before] Initializing DMP");
+    const int dev_status = mpu.dmpInitialize();
+    if (dev_status != 0) {
+        Serial.println("[Error] DMP Initialization Failed");
+        vTaskDelete(NULL);
+    }
+    mpu.setDMPEnabled(true); // enable mpu's dmp
+    packet_size = mpu.dmpGetFIFOPacketSize(); // dmp packet size
+    dmp_ready = true; // dmp is ready to be used
 }
 
 void InertialUnit::stabilize() {
@@ -57,4 +82,72 @@ void InertialUnit::stabilize() {
 
     base_orientation = getOrientation();
     Serial.println("[After] MPU6050 Stabilized");
+}
+
+InertialUnit::Orientation_t InertialUnit::getOrientation() {
+    Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+
+    // Compute 4D Orientation
+    // Compute Roll Pitch
+    // Compute 3D Orientation
+    mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+    mpu.dmpGetGravity(&gravity, &quaternion);
+    mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+
+    // Compute 3D Orientation from 4D Orientation
+    // Convert rad to deg
+    orientation.yaw = ypr[0] * 180.0f / M_PI;
+    orientation.pitch = ypr[1] * 180.0f / M_PI;
+    orientation.roll = ypr[2] * 180.0f / M_PI;
+    return orientation;
+}
+
+void InertialUnit::run() {
+    if (!imu_usable) {
+        return;
+    }
+
+    // Ready and compute orientation
+    Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+
+    Serial.println("[Log] Reading Orientation");
+    for (;;) {
+        if (!(dmp_ready && mpu.dmpGetCurrentFIFOPacket(fifo_buffer))) {
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
+
+        // Compute 4D Orientation
+        mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+        mpu.dmpGetGravity(&gravity, &quaternion);
+        mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+
+        // Compute 3D Orientation from 4D Orientation
+        // Convert rad to deg
+        orientation.yaw = ypr[0] * 180.0f / M_PI;
+        orientation.pitch = ypr[1] * 180.0f / M_PI;
+        orientation.roll = ypr[2] * 180.0f / M_PI;
+
+        current_orientation.roll = orientation.roll - base_orientation.roll;
+        current_orientation.pitch = orientation.pitch - base_orientation.pitch;
+        current_orientation.yaw = orientation.yaw - base_orientation.yaw;
+
+        Serial.printf(
+            "Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n",
+            current_orientation.roll,
+            current_orientation.pitch,
+            current_orientation.yaw
+        );
+
+        // ~100Hz
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
+
+bool InertialUnit::ready() {
+    return imu_usable;
+}
+
+void InertialUnit::setBaseOrientation() {
+    base_orientation = getOrientation();
 }
