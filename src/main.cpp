@@ -180,17 +180,17 @@ static RawMotor right_omnidir(13, 26, 15, power, absMinPower, absMaxPower, shutd
 // MPU-6050
 #define I2C_SCL_PIN 21
 #define I2C_SDA_PIN 22
-MPU6050 mpu;
+// MPU6050 mpu;
 
 // MPU-6050 > DMP
-bool dmp_ready = false; // on board computer to do math for orientation
-int packet_size;
-uint8_t fifo_buffer[64];
-
-// MPU-6050 > Orientation
-Quaternion quaternion;
-VectorFloat gravity;
-float ypr[3];
+// bool dmp_ready = false; // on board computer to do math for orientation
+// int packet_size;
+// uint8_t fifo_buffer[64];
+//
+// // MPU-6050 > Orientation
+// Quaternion quaternion;
+// VectorFloat gravity;
+// float ypr[3];
 
 void rotateLeft(void *pvParameters);
 
