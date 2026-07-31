@@ -138,9 +138,11 @@
 #include <Wire.h>                           // I2C Hardware Driver
 #include <I2Cdev.h>                         // I2C Auto Transmission Layer aka Wrapper
 #include <SystemMode.h>
+#include <DriveMode.h>
 
 // System
 SystemMode system_mode = SystemMode::GUIDED;
+DriveMode drive_mode = DriveMode::SINGLE_TARGET;
 
 // System > Enabler
 bool mpu_working = false;
