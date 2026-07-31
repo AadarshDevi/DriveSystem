@@ -203,7 +203,7 @@ void loop() {
 void imu(void *pvParameters) {
     // Initialize I2C
     Serial.println("[Before] Initializing Wire");
-    Wire.begin(I2C_SCL_PIN, I2C_SDA_PIN, 1E5); // 1E5 = 100,000 or 100kHz to steadily upload code
+    Wire.begin(I2C_SCL_PIN, I2C_SDA_PIN, static_cast<int>(1E5)); // 1E5 = 100,000 or 100kHz to steadily upload code
     Serial.println("[After] Wire Initialized");
 
     // Initialize IMU
@@ -245,6 +245,6 @@ void imu(void *pvParameters) {
 
     // DMP is ready to start doing calculations really quickly.
     // so i2c can now be faster
-    Wire.setClock(4E5); // 4E5 = 400,000 kHz
+    Wire.setClock(static_cast<int>(4E5)); // 4E5 = 400,000 kHz
     Serial.println("[After] DMP Initialized");
 }
