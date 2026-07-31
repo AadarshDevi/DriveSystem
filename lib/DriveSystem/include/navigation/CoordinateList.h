@@ -28,6 +28,7 @@ public:
     void add(float x, float y, float z);
 
     Coordinate_t getFirst() const;
+    Coordinate_t getTarget() const;
     Coordinate_t getFinalTarget() const;
 
     int getSize() const { return SIZE; }
