@@ -144,8 +144,7 @@ void drive(void *pvParameters);
 
 void stop(void *pvParameters);
 
-unsigned long startTime = 0;
-unsigned long endTime = 0;
+void wheelEncoder(void *pvParameters);
 
 RawMotor left_mechanum(27, 25, 23, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor right_mechanum(14, 4, 19, power, absMinPower, absMaxPower, shutdownPower);
