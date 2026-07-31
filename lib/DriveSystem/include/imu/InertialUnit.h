@@ -58,7 +58,7 @@ public:
     /*
     Checks if the IMU can be used
     */
-    bool ready();
+    bool ready() const;
 
     void setBaseOrientation();
 
