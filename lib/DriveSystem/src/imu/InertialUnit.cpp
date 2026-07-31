@@ -8,3 +8,5 @@
 #include <Wire.h>
 
 #include "MPU6050_6Axis_MotionApps612.h"
+
+MPU6050 mpu;
