@@ -257,6 +257,9 @@ void imu(void *pvParameters) {
     float yaw = 0.0;
 
     Serial.println("Reading Orientation");
+    // Ready and compute orientation
+    for (;;) {
+        if (dmp_ready && mpu.dmpGetCurrentFIFOPacket(fifo_buffer)) {
             mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
             mpu.dmpGetGravity(&gravity, &quaternion);
             mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
