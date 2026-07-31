@@ -257,5 +257,12 @@ void imu(void *pvParameters) {
     float yaw = 0.0;
 
     Serial.println("Reading Orientation");
+            mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+            mpu.dmpGetGravity(&gravity, &quaternion);
+            mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
             Serial.printf("Roll: %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
 }
