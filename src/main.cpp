@@ -259,17 +259,20 @@ void imu(void *pvParameters) {
     Serial.println("Reading Orientation");
     // Ready and compute orientation
     for (;;) {
-        if (dmp_ready && mpu.dmpGetCurrentFIFOPacket(fifo_buffer)) {
-            mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
-            mpu.dmpGetGravity(&gravity, &quaternion);
-            mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
-
-            yaw = ypr[0] * 180.8f / M_PI;
-            pitch = ypr[1] * 180.8f / M_PI;
-            roll = ypr[2] * 180.8f / M_PI;
-
-            Serial.printf("Roll: %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
+        if (!(dmp_ready && mpu.dmpGetCurrentFIFOPacket(fifo_buffer))) {
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
         }
+
+        mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
+        mpu.dmpGetGravity(&gravity, &quaternion);
+        mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
+
+        yaw = ypr[0] * 180.0f / M_PI;
+        pitch = ypr[1] * 180.0f / M_PI;
+        roll = ypr[2] * 180.0f / M_PI;
+
+        Serial.printf("Roll: %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
 
         vTaskDelay(pdMS_TO_TICKS(10));
     }
