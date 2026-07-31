@@ -331,7 +331,7 @@ void imu(void *pvParameters) {
     float pitch = 0.0;
     float yaw = 0.0;
 
-    Serial.println("Reading Orientation");
+    Serial.println("[Log] Reading Orientation");
     for (;;) {
         if (!(dmp_ready && mpu.dmpGetCurrentFIFOPacket(fifo_buffer))) {
             vTaskDelay(pdMS_TO_TICKS(10));
