@@ -140,9 +140,10 @@
 
 // FreeRTOS
 #define MUTEX_TIMEOUT_MS 10
-SemaphoreHandle_t mutex;
 
 struct MutexGuard {
+    SemaphoreHandle_t mutex;
+    bool locked;
 };
 
 // System
