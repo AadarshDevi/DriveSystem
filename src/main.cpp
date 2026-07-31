@@ -221,6 +221,15 @@ void setup() {
             nullptr,
             1
         );
+        xTaskCreatePinnedToCore(
+            printOrientation,
+            "PrintOrientation",
+            4096,
+            nullptr,
+            1,
+            nullptr,
+            1
+        );
     }
 }
 
