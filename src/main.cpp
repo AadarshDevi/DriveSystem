@@ -189,6 +189,15 @@ void coords(void *pvParameters);
 void setup() {
     Serial.begin(115200);
 
+    xTaskCreatePinnedToCore(
+        imu,
+        "IMU",
+        4096,
+        NULL,
+        1,
+        NULL,
+        1
+    );
 }
 
 void loop() {
