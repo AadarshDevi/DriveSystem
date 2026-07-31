@@ -43,7 +43,7 @@ InertialUnit::InertialUnit(int i2c_scl_pin, int i2c_sda_pin) {
     mpu.initialize();
     if (!mpu.testConnection()) {
         Serial.println("[Error] MPU6050 Connection Failed");
-        vTaskDelete(NULL);
+        vTaskDelete(nullptr);
     }
     Serial.println("[After] MPU6050 Initialized");
 
@@ -86,7 +86,7 @@ void InertialUnit::dmp() {
     const int dev_status = mpu.dmpInitialize();
     if (dev_status != 0) {
         Serial.println("[Error] DMP Initialization Failed");
-        vTaskDelete(NULL);
+        vTaskDelete(nullptr);
     }
     mpu.setDMPEnabled(true); // enable mpu's dmp
     packet_size = mpu.dmpGetFIFOPacketSize(); // dmp packet size
