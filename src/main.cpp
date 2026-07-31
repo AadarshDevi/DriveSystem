@@ -145,16 +145,21 @@
 // System
 SystemMode system_mode = SystemMode::GUIDED;
 
+// Motor > Power
 int power = 128; // motor power
 constexpr int absMinPower = 50; // min power limit
 constexpr int absMaxPower = 255; // max power limit
 constexpr int shutdownPower = 0; // shutdown motor power - for emergency uses
 
+// Motor
 RawMotor left_mechanum(27, 23, 4, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor right_mechanum(12, 18, 25, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor left_omnidir(14, 19, 2, power, absMinPower, absMaxPower, shutdownPower);
 RawMotor right_omnidir(13, 26, 15, power, absMinPower, absMaxPower, shutdownPower);
 
+// MPU-6050
+// MPU-6050 > DMP
+// MPU-6050 > Orientation
 void rotateLeft(void *pvParameters);
 
 void rotateRight(void *pvParameters);
