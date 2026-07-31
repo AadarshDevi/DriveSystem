@@ -106,6 +106,7 @@ void setup() {
     }
 
     if (system_mode == AUTONOMOUS) {
+        Serial.println("[Powertrain::Mode] AUTONOMOUS");
         xTaskCreatePinnedToCore(
             orient,
             "IMU",
@@ -124,6 +125,8 @@ void setup() {
             nullptr,
             1
         );
+    } else {
+        Serial.println("[Powertrain::Mode] GUIDED");
     }
 }
 
