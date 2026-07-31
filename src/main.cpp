@@ -151,6 +151,9 @@ typedef struct Orientation_t {
     float yaw;
 };
 
+Orientation_t current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // continuously set
+Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
+
 // Motor > Power
 int power = 128; // motor power
 constexpr int absMinPower = 50; // min power limit
