@@ -168,6 +168,10 @@ int packet_size;
 int fifo_buffer[64];
 
 // MPU-6050 > Orientation
+Quaternion quaternion;
+VectorFloat gravity;
+float ypr[3];
+
 void rotateLeft(void *pvParameters);
 
 void rotateRight(void *pvParameters);
