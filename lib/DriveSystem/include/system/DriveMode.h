@@ -10,12 +10,12 @@ enum DriveMode {
     /*
      Powertrain goes to the target point then orientates itself to go to the next point
      */
-    SINGLE_TARGET,
+    FOCUSED,
 
     /*
      Powertrain uses the given target points to plan out a route and calculate power, distance, and orientation
      */
-    MULTI_TARGET
+    INTELLI_SENSE
 };
 
 
