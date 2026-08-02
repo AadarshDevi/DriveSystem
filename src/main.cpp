@@ -101,7 +101,7 @@ void setup() {
     if (imu.ready()) {
         system_mode = AUTONOMOUS;
     } else {
-        system_mode = GUIDED;
+        system_mode = REMOTE_CONTROL;
     }
 
     if (system_mode == AUTONOMOUS) {
