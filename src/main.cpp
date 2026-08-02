@@ -161,13 +161,6 @@ void orient(void *pvParameters) {
             current_orientation.yaw = yaw;
         }
 
-        // Serial.printf(
-        //     "Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n",
-        //     current_orientation.roll,
-        //     current_orientation.pitch,
-        //     current_orientation.yaw
-        // );
-
         // ~100Hz
         vTaskDelay(pdMS_TO_TICKS(10));
     }
@@ -177,22 +170,17 @@ void printOrientation(void *pvParameters) {
     float roll = 0.0f;
     float pitch = 0.0f;
     float yaw = 0.0f;
-    bool print;
 
     for (;;) {
-        print = false;
         if (MutexGuard lock{
             mutex
         }) {
             roll = current_orientation.roll;
             pitch = current_orientation.pitch;
             yaw = current_orientation.yaw;
-            print = true;
         }
 
-        if (print) {
-            Serial.printf("Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
-        }
+        Serial.printf("Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
         vTaskDelay(pdMS_TO_TICKS(200)); // 200 ms for each print
     }
 }
