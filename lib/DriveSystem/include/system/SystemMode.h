@@ -17,7 +17,7 @@ enum SystemMode {
     /*
      The Powertrain is handicapped by the IMU or Wheel encoder. Because of that, the Powertrain is dependent on the main computer
      */
-    GUIDED
+    REMOTE_CONTROL
 };
 
 
