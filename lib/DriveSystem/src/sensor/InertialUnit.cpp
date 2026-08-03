@@ -2,11 +2,13 @@
 // Created by CryosArtic on 7/30/2026.
 //
 #include <cstdint>
-
 #include <HardwareSerial.h>
 #include <Wire.h>
 
-#include "../../include/imu/InertialUnit.h"
+#include "../../include/sensor/InertialUnit.h"
+
+#include <iostream>
+#include <freertos/task.h>
 
 
 InertialUnit::InertialUnit(int i2c_scl_pin, int i2c_sda_pin) {
