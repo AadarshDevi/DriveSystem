@@ -91,7 +91,6 @@ void setup() {
     );
 
     if (system_mode == AUTONOMOUS) {
-        inputManager.readData(&coordinateList); // store/parse data
         xTaskCreatePinnedToCore( // imu ready
             run_imu,
             "run_imu",
