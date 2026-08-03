@@ -144,16 +144,9 @@ void InertialUnit::run() {
 
         orientation = calculateOrientation();
 
-        current_orientation.roll = orientation.roll - base_orientation.roll;
-        current_orientation.pitch = orientation.pitch - base_orientation.pitch;
-        current_orientation.yaw = orientation.yaw - base_orientation.yaw;
-
-        Serial.printf(
-            "Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n",
-            current_orientation.roll,
-            current_orientation.pitch,
-            current_orientation.yaw
-        );
+        internal_current_orientation.roll = orientation.roll - base_orientation.roll;
+        internal_current_orientation.pitch = orientation.pitch - base_orientation.pitch;
+        internal_current_orientation.yaw = orientation.yaw - base_orientation.yaw;
 
         // ~100Hz
         vTaskDelay(pdMS_TO_TICKS(10));
