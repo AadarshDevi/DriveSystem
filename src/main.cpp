@@ -46,7 +46,7 @@ static bool wheel_encoder_working = false;
 // System > Drive
 #define WHEEL_ENCODER_PIN 34
 static int dist_to_travel = 0;
-static int dist_travelled = 0;
+static volatile int dist_travelled = 0;
 
 static volatile Orientation_t external_current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
 // continuously set
