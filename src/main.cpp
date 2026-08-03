@@ -5,7 +5,6 @@
 #include <system/DriveMode.h>               // Powertrain driving mode
 #include <freertos/semphr.h>                // Semaphore
 #include <freertos/task.h>                  // xTaskCreate
-#include <navigation/CoordinateList.h>
 #include "comms/InputManager.h"
 #include "sensor/WheelEncoder.h"
 // FreeRTOS
