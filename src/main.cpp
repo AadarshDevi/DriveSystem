@@ -98,6 +98,8 @@ void setup() {
 
     static WheelEncoder encoder(WHEEL_ENCODER_PIN);
 
+    const char *send_mode = "[Powertrain] --sys-mode=%s --drive-mode=%s\n";
+
     InputManager inputManager(system_mode);
     xTaskCreatePinnedToCore(
         run_input_manager,
@@ -110,11 +112,10 @@ void setup() {
     );
 
     if (system_mode == AUTONOMOUS) {
-        Serial.println("[Powertrain::Mode] AUTONOMOUS");
-        xTaskCreatePinnedToCore(
-            orient,
-            "IMU",
         inputManager.readData(&coordinateList); // store/parse data
+        xTaskCreatePinnedToCore( // imu ready
+            run_imu,
+            "run_imu",
             4096,
             &imu,
             1,
