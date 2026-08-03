@@ -165,18 +165,6 @@ bool InertialUnit::is_dmp_ready() const {
     return dmp_ready;
 }
 
-MPU6050 InertialUnit::get_mpu() const {
-    return mpu;
-}
-
-Orientation_t InertialUnit::get_base_orientation() const {
-    return base_orientation;
-}
-
-uint8_t InertialUnit::get_fifo_buffer() const {
-    return *fifo_buffer;
-}
-
-uint8_t *InertialUnit::get_buffer() {
-    return fifo_buffer;
+Orientation_t InertialUnit::getOrientation() {
+    return internal_current_orientation;
 }
