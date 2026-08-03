@@ -19,8 +19,6 @@ private:
 public:
     InputManager(SystemMode systemMode);
 
-    void readData(volatile CoordinateList *coordinateList);
-
     void parseData();
 
     Coordinate_t getTarget();

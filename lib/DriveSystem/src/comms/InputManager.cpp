@@ -7,7 +7,6 @@
 #include <HardwareSerial.h>
 
 #include "navigation/CoordinateList.h"
-#include "system/DriveMode.h"
 #include "system/SystemMode.h"
 
 
@@ -20,7 +19,7 @@ InputManager::InputManager(SystemMode system_mode) {
 }
 
 
-void InputManager::readData(volatile CoordinateList *coordinateList) {
+void InputManager::run() {
     if (!Serial) {
         Serial.begin(115200);
     }
@@ -41,6 +40,7 @@ void InputManager::readData(volatile CoordinateList *coordinateList) {
                 continue;
             }
 
+            // todo make Coordinate_t objects and parse them
             if (data_write) {
                 String x_str = data_char;
                 x_str.trim();
@@ -63,7 +63,4 @@ void InputManager::parseData() {
 }
 
 Coordinate_t InputManager::getTarget() {
-}
-
-void InputManager::run() {
 }
