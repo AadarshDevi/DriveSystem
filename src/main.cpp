@@ -67,23 +67,11 @@ static RawMotor right_omnidir(13, 26, 33, power, absMinPower, absMaxPower, shutd
 #define I2C_SCL_PIN 21
 #define I2C_SDA_PIN 22
 
-void rotateLeft(void *pvParameters);
+void run_input_manager(void *p);
 
-void rotateRight(void *pvParameters);
+void run_imu(void *p);
 
-void drive(void *pvParameters);
-
-void stop(void *pvParameters);
-
-void wheelEncoder(void *pvParameters);
-
-void imu(void *pvParameters);
-
-void coords(void *pvParameters);
-
-static void orient(void *pvParameters);
-
-static void printOrientation(void *pvParameters);
+void run_wheel_encoder(void *p);
 
 void setup() {
     // Set basic info
