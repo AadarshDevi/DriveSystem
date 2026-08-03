@@ -123,8 +123,8 @@ void setup() {
             1
         );
         xTaskCreatePinnedToCore(
-            printOrientation,
-            "PrintOrientation",
+            run_wheel_encoder,
+            "run_wheel_encoder",
             4096,
             nullptr,
             1,
