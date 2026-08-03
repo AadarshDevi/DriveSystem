@@ -5,8 +5,6 @@
 #ifndef DRIVESYSTEM_INERTIALUNIT_H
 #define DRIVESYSTEM_INERTIALUNIT_H
 
-#include <cstdint>
-
 #include "MPU6050_6Axis_MotionApps20.h"
 
 /*
