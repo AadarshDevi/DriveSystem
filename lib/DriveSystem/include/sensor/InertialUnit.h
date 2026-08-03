@@ -62,13 +62,7 @@ public:
 
     bool is_dmp_ready() const;
 
-    MPU6050 get_mpu() const;
-
-    Orientation_t get_base_orientation() const;
-
-    uint8_t get_fifo_buffer() const;
-
-    uint8_t *get_buffer();
+    Orientation_t getOrientation();
 
 private:
     MPU6050 mpu;
