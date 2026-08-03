@@ -87,7 +87,7 @@ void InertialUnit::stabilize() {
             continue;
         }
 
-        current = getOrientation();
+        current = calculateOrientation();
 
         if (
             fabs(current.roll - previous.roll) >= 0.02f ||
@@ -105,11 +105,11 @@ void InertialUnit::stabilize() {
         vTaskDelay(pdMS_TO_TICKS(10));
     }
 
-    base_orientation = getOrientation();
+    base_orientation = calculateOrientation();
     Serial.println("[After] MPU6050 Stabilized");
 }
 
-Orientation_t InertialUnit::getOrientation() {
+Orientation_t InertialUnit::calculateOrientation() {
     Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
 
     // Compute 4D Orientation
@@ -142,18 +142,7 @@ void InertialUnit::run() {
             continue;
         }
 
-        // Compute 4D Orientation
-        // mpu.dmpGetQuaternion(&quaternion, fifo_buffer);
-        // mpu.dmpGetGravity(&gravity, &quaternion);
-        // mpu.dmpGetYawPitchRoll(ypr, &quaternion, &gravity);
-        //
-        // // Compute 3D Orientation from 4D Orientation
-        // // Convert rad to deg
-        // orientation.yaw = ypr[0] * 180.0f / M_PI;
-        // orientation.pitch = ypr[1] * 180.0f / M_PI;
-        // orientation.roll = ypr[2] * 180.0f / M_PI;
-
-        orientation = getOrientation();
+        orientation = calculateOrientation();
 
         current_orientation.roll = orientation.roll - base_orientation.roll;
         current_orientation.pitch = orientation.pitch - base_orientation.pitch;
@@ -176,7 +165,7 @@ bool InertialUnit::ready() const {
 }
 
 void InertialUnit::setBaseOrientation() {
-    base_orientation = getOrientation();
+    base_orientation = calculateOrientation();
 }
 
 bool InertialUnit::is_dmp_ready() const {
