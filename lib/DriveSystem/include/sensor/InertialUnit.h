@@ -68,7 +68,7 @@ private:
     MPU6050 mpu;
 
     Orientation_t base_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
-    Orientation_t current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+    Orientation_t internal_current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
 
     bool dmp_ready = false; // on board computer to do math for orientation
     int packet_size = 0;
