@@ -131,8 +131,15 @@ void setup() {
             nullptr,
             1
         );
-    } else {
-        Serial.println("[Powertrain::Mode] GUIDED");
+        if (drive_mode == FOCUSED) {
+            // code
+            Serial.printf(send_mode, system_mode, drive_mode);
+        } else if (drive_mode == INTELLI_SENSE) {
+            // code
+            Serial.printf(send_mode, system_mode, drive_mode);
+        }
+    } else if (system_mode == REMOTE_CONTROL) {
+        Serial.printf(send_mode, system_mode, drive_mode);
     }
 }
 
