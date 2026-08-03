@@ -95,6 +95,9 @@ void setup() {
     } else {
         system_mode = REMOTE_CONTROL;
     }
+
+    static WheelEncoder encoder(WHEEL_ENCODER_PIN);
+
     InputManager inputManager(system_mode);
     xTaskCreatePinnedToCore(
         run_input_manager,
@@ -144,4 +147,9 @@ void loop() {
 void run_input_manager(void *pvParameters) {
     InputManager &inputManager = *static_cast<InputManager *>(pvParameters);
     inputManager.run();
+}
+
+void run_wheel_encoder(void *pvParameters) {
+    WheelEncoder &encoder = *static_cast<WheelEncoder *>(pvParameters);
+    encoder.run();
 }
