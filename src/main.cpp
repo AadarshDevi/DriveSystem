@@ -48,7 +48,8 @@ static bool wheel_encoder_working = false;
 static int dist_to_travel = 0;
 static int dist_travelled = 0;
 
-static volatile Orientation_t current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // continuously set
+static volatile Orientation_t external_current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+// continuously set
 static Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
 
 // Motor > Power
