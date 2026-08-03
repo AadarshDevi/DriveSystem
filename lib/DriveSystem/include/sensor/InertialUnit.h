@@ -46,17 +46,17 @@ public:
     /*
      Gets Orientation
      */
-    Orientation_t getOrientation();
-
-    /*
-     Run the IMU to monitor orientation
-     */
-    void run();
+    Orientation_t calculateOrientation();
 
     /*
     Checks if the IMU can be used
     */
     bool ready() const;
+
+    /*
+     Run the IMU to monitor orientation
+     */
+    void run();
 
     void setBaseOrientation();
 
