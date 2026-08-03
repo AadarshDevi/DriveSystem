@@ -9,11 +9,11 @@
 
 #include "motor/RawMotor.h"
 
-class DifferentialRoverDrive {
+class DifferentialDrive {
     std::vector<RawMotor> motors;
 
 public:
-    DifferentialRoverDrive(
+    DifferentialDrive(
         int new_wheelCount,
         std::vector<std::vector<int> > new_motorPins,
         std::vector<int> new_powerInput

@@ -2,13 +2,13 @@
 // Created by CryosArtic on 6/29/2026.
 //
 
-#include "DifferentialRoverDrive.h"
+#include "../../include/powertrain/DifferentialDrive.h"
 
 #include <vector>
 
 #include "motor/RawMotor.h"
 
-DifferentialRoverDrive::DifferentialRoverDrive(
+DifferentialDrive::DifferentialDrive(
     int new_wheelCount,
     std::vector<std::vector<int> > new_motorPins,
     std::vector<int> new_powerInput
@@ -39,7 +39,7 @@ DifferentialRoverDrive::DifferentialRoverDrive(
     }
 }
 
-void DifferentialRoverDrive::debugPower(int powerInput) const {
+void DifferentialDrive::debugPower(int powerInput) const {
     for (int i = 0; i < motors.size(); i++) {
         RawMotor motor = motors[i];
         Serial.printf(
@@ -54,17 +54,17 @@ void DifferentialRoverDrive::debugPower(int powerInput) const {
     Serial.println();
 }
 
-void DifferentialRoverDrive::setPower(int new_power) const {
+void DifferentialDrive::setPower(int new_power) const {
     for (RawMotor motor: motors) {
         motor.setPower(new_power);
     }
 }
 
-void DifferentialRoverDrive::setPower(int new_motorNum, int new_power) {
+void DifferentialDrive::setPower(int new_motorNum, int new_power) {
     motors[new_motorNum].setPower(new_power);
 }
 
-void DifferentialRoverDrive::shutdownMotors() {
+void DifferentialDrive::shutdownMotors() {
     for (RawMotor motor: motors) {
         while (motor.getPower() > motor.getShutdownPower()) {
             motor.powerVal(
@@ -78,13 +78,13 @@ void DifferentialRoverDrive::shutdownMotors() {
     }
 }
 
-void DifferentialRoverDrive::debug(bool new_debug) {
+void DifferentialDrive::debug(bool new_debug) {
     for (RawMotor motor: motors) {
         motor.debug(new_debug);
     }
 }
 
-void DifferentialRoverDrive::run() {
+void DifferentialDrive::run() {
     for (RawMotor motor: motors) {
         motor.run();
     }
