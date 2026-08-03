@@ -95,12 +95,23 @@ void setup() {
     } else {
         system_mode = REMOTE_CONTROL;
     }
+    InputManager inputManager(system_mode);
+    xTaskCreatePinnedToCore(
+        run_input_manager,
+        "run_input_manager",
+        4069,
+        &inputManager,
+        1,
+        nullptr,
+        0
+    );
 
     if (system_mode == AUTONOMOUS) {
         Serial.println("[Powertrain::Mode] AUTONOMOUS");
         xTaskCreatePinnedToCore(
             orient,
             "IMU",
+        inputManager.readData(&coordinateList); // store/parse data
             4096,
             &imu,
             1,
@@ -128,4 +139,9 @@ void run_imu(void *pvParameters) {
 
 void loop() {
     vTaskDelete(nullptr);
+}
+
+void run_input_manager(void *pvParameters) {
+    InputManager &inputManager = *static_cast<InputManager *>(pvParameters);
+    inputManager.run();
 }
