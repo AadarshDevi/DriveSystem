@@ -121,60 +121,9 @@ void setup() {
     }
 }
 
-void orient(void *pvParameters) {
+void run_imu(void *pvParameters) {
     InertialUnit &imu = *static_cast<InertialUnit *>(pvParameters);
-
-    // Ready and compute orientation
-    Orientation_t orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
-
-    float roll = 0.0f;
-    float pitch = 0.0f;
-    float yaw = 0.0f;
-
-    Serial.println("[Log] Reading Orientation");
-    uint8_t *buffer = imu.get_buffer();
-    for (;;) {
-        if (!(imu.is_dmp_ready() && imu.get_mpu().dmpGetCurrentFIFOPacket(buffer))) {
-            vTaskDelay(pdMS_TO_TICKS(10));
-            continue;
-        }
-
-        orientation = imu.getOrientation();
-
-        roll = orientation.roll - imu.get_base_orientation().roll;
-        pitch = orientation.pitch - imu.get_base_orientation().pitch;
-        yaw = orientation.yaw - imu.get_base_orientation().yaw;
-
-        if (MutexGuard lock{
-            mutex
-        }) {
-            current_orientation.roll = roll;
-            current_orientation.pitch = pitch;
-            current_orientation.yaw = yaw;
-        }
-
-        // ~100Hz
-        vTaskDelay(pdMS_TO_TICKS(10));
-    }
-}
-
-void printOrientation(void *pvParameters) {
-    float roll = 0.0f;
-    float pitch = 0.0f;
-    float yaw = 0.0f;
-
-    for (;;) {
-        if (MutexGuard lock{
-            mutex
-        }) {
-            roll = current_orientation.roll;
-            pitch = current_orientation.pitch;
-            yaw = current_orientation.yaw;
-        }
-
-        Serial.printf("Roll:  %6.2f° | Pitch: %6.2f° | Yaw: %6.2f°\n", roll, pitch, yaw);
-        vTaskDelay(pdMS_TO_TICKS(200)); // 200 ms for each print
-    }
+    imu.run();
 }
 
 void loop() {
