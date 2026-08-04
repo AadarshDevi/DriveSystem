@@ -8,7 +8,10 @@
 #include "sensor/InertialUnit.h"
 
 class IntelliSense {
-};
+    InertialUnit inertialUnit;
+    WheelEncoder wheelEncoder;
 
+    void run();
+};
 
 #endif //DRIVESYSTEM_DRIVESYSTEM_H
