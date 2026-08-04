@@ -140,3 +140,8 @@ void run_wheel_encoder(void *pvParameters) {
     WheelEncoder &encoder = *static_cast<WheelEncoder *>(pvParameters);
     encoder.run();
 }
+
+void run_intelli_sense(void *pvParameters) {
+    IntelliSense &intelli_sense = *static_cast<IntelliSense *>(pvParameters);
+    intelli_sense.run();
+}
