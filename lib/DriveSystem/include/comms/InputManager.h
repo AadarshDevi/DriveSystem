@@ -15,6 +15,9 @@ enum InputMode {
 class InputManager {
 private:
     InputMode inputMode;
+    CoordinateList coordinateList;
+    Coordinate_t base_location;
+    Coordinate_t target_location;
 
 public:
     InputManager(SystemMode systemMode);
