@@ -38,6 +38,20 @@ void InputManager::run() {
             } else if (data_char.equals("--data-end")) {
                 data_write = false;
                 continue;
+            } else if (data_char.equals("--set-location")) {
+                // --set-location x0 y0 x1 y1
+
+                base_location = {
+                    .x = data_char.toFloat(),
+                    .y = Serial.readStringUntil(' ').toFloat(),
+                    .z = 0.0f
+                };
+                target_location = {
+                    .x = data_char.toFloat(),
+                    .y = Serial.readStringUntil(' ').toFloat(),
+                    .z = 0.0f
+                };
+                has_new_data = true;
             }
 
             // todo make Coordinate_t objects and parse them
