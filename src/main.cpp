@@ -6,6 +6,7 @@
 #include <freertos/semphr.h>                // Semaphore
 #include <freertos/task.h>                  // xTaskCreate
 #include "comms/InputManager.h"
+#include "powertrain/IntelliSense.h"
 #include "sensor/WheelEncoder.h"
 // FreeRTOS
 SemaphoreHandle_t mutex;
