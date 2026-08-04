@@ -42,16 +42,12 @@ void InputManager::run() {
 
             // todo make Coordinate_t objects and parse them
             if (data_write) {
-                String x_str = data_char;
-                x_str.trim();
-                String y_str = Serial.readStringUntil(' ');
-                y_str.trim();
-                String z_str = Serial.readStringUntil(' ');
-                z_str.trim();
-                float x = x_str.toFloat();
-                float y = y_str.toFloat();
-                float z = z_str.toFloat();
-                Serial.println(String(x) + ", " + String(y) + ", " + String(z));
+                Coordinate_t coordinate = {
+                    .x = data_char.toFloat(),
+                    .y = Serial.readStringUntil(' ').toFloat(),
+                    .z = Serial.readStringUntil(' ').toFloat()
+                };
+                coordinateList.add(coordinate);
             }
             vTaskDelay(pdMS_TO_TICKS(10));
         }
