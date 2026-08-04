@@ -4,6 +4,8 @@
 
 #ifndef DRIVESYSTEM_DRIVESYSTEM_H
 #define DRIVESYSTEM_DRIVESYSTEM_H
+#include "sensor/WheelEncoder.h"
+#include "sensor/InertialUnit.h"
 
 class IntelliSense {
 };
