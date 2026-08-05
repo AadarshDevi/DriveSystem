@@ -119,6 +119,18 @@ void setup() {
             // code
             Serial.printf(send_mode, system_mode, drive_mode);
         }
+
+        DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mechanum, right_mechanum);
+
+        IntelliSense intelliSense(imu, encoder, inputManager, differentialDrive);
+        xTaskCreatePinnedToCore(
+            run_intelli_sense,
+            "run_intelli_sense",
+            8192,
+            &intelliSense,
+            1,
+            nullptr,
+            0);
     } else if (system_mode == REMOTE_CONTROL) {
         Serial.printf(send_mode, system_mode, drive_mode);
     }
