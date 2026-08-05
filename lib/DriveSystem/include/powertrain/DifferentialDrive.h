@@ -21,19 +21,28 @@ public:
         RawMotor &left_mecanum, RawMotor &right_mecanum
     );
 
-    void debugPower(int powerInput) const;
+    // void debugPower(int powerInput) const;
+    //
+    void setPower(int new_power);
 
-    void setPower(int new_power) const;
+    void drive(float distance);
 
-    void setPower(int new_motorNum, int new_power);
+    void rotate(float angle);
 
-    void shutdownMotors();
-
-    void shutdownMotor(int motorNum) { motors[motorNum].shutdown(); }
-
-    void debug(bool new_debug);
+    void stop();
 
     void run();
+
+    //
+    // void setPower(int new_motorNum, int new_power);
+    //
+    // void shutdownMotors();
+    //
+    // void shutdownMotor(int motorNum) { motors[motorNum].shutdown(); }
+    //
+    // void debug(bool new_debug);
+    //
+    // void run();
 };
 
 
