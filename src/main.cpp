@@ -33,7 +33,7 @@ static Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0
 
 // Motor > Power
 static int power = 128; // motor power
-constexpr int absMinPower = 50; // min power limit
+constexpr int absMinPower = 0; // min power limit
 constexpr int absMaxPower = 175; // max power limit
 constexpr int shutdownPower = 0; // shutdown motor power - for emergency uses
 
