@@ -76,6 +76,7 @@ void InputManager::run() {
         }
         vTaskDelay(pdMS_TO_TICKS(10));
     }
+    vTaskDelay(pdMS_TO_TICKS(10));
 }
 
 Trajectory2_t InputManager::getNewData() {
