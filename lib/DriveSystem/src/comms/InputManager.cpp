@@ -25,14 +25,19 @@ void InputManager::run() {
         Serial.begin(115200);
     }
 
+    Serial.println("[Powertrain::InputManager] Ready 2 Run");
+
     bool data_write = false;
     for (;;) {
+        Serial.println("[Powertrain::InputManager] Forever Loop...");
         while (Serial.available() > 0) {
+            Serial.println("[Powertrain::InputManager] Reading Serial...");
             String data_char = Serial.readStringUntil(' ');
             data_char.trim();
 
             if (data_char.length() == 0) continue;
 
+            Serial.println("[Powertrain::InputManager] Checking for CMDs...");
             if (data_char.equals("--data-write")) {
                 data_write = true;
                 continue;
