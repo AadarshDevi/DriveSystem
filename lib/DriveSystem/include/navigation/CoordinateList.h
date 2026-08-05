@@ -2,8 +2,8 @@
 // Created by CryosArtic on 7/31/2026.
 //
 
-#ifndef DRIVESYSTEM_NAVIGATION_H
-#define DRIVESYSTEM_NAVIGATION_H
+#ifndef DRIVESYSTEM_COORDINATeLIST_H
+#define DRIVESYSTEM_COORDINATeLIST_H
 
 #include "navigation/Navigation.h"
 
