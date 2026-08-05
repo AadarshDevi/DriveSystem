@@ -11,7 +11,7 @@
 #include "navigation/Navigation.h"
 
 
-InputManager::InputManager(SystemMode system_mode) {
+InputManager::InputManager(SystemMode system_mode) : coordinateList() {
     if (system_mode == REMOTE_CONTROL) {
         inputMode = REMOTE;
     } else if (system_mode == AUTONOMOUS) {
