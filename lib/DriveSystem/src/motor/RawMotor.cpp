@@ -139,7 +139,8 @@ void RawMotor::powerVal(int new_power) {
 }
 
 void RawMotor::run() const {
-    if (!rotationEnabled) return;
+    if (!rotationEnabled)
+        analogWrite(pinPWM, shutdownPower);
     analogWrite(pinPWM, power);
 }
 
