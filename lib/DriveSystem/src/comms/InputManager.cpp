@@ -70,8 +70,8 @@ void InputManager::run() {
     }
 }
 
-void InputManager::parseData() {
-}
+Trajectory2_t InputManager::getNewData() {
+    Trajectory2_t trajectory;
 
 Coordinate_t InputManager::getTarget() {
 }
