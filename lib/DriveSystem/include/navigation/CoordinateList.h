@@ -5,17 +5,7 @@
 #ifndef DRIVESYSTEM_NAVIGATION_H
 #define DRIVESYSTEM_NAVIGATION_H
 
-typedef struct {
-    float x;
-    float y;
-    float z;
-
-    void reset() {
-        x = 0.0f;
-        y = 0.0f;
-        z = 0.0f;
-    }
-} Coordinate_t;
+#include "navigation/Navigation.h"
 
 #define SIZE 15
 
