@@ -10,9 +10,21 @@
 #include "sensor/WheelEncoder.h"
 #include "sensor/InertialUnit.h"
 
+
 class IntelliSense {
-    InertialUnit inertialUnit;
-    WheelEncoder wheelEncoder;
+private:
+    InertialUnit &inertialUnit;
+    WheelEncoder &wheelEncoder;
+    InputManager &inputManager;
+    DifferentialDrive &differentialDrive;
+
+public:
+    IntelliSense(
+        InertialUnit &inertialUnit,
+        WheelEncoder &wheelEncoder,
+        InputManager &inputManager,
+        DifferentialDrive &differentialDrive
+    );
 
     void run();
 };
