@@ -25,9 +25,9 @@ private:
 public:
     InputManager(SystemMode systemMode);
 
-    void parseData();
+    Trajectory2_t getNewData();
 
-    Coordinate_t getTarget();
+    bool hasNewData() const { return has_new_data; }
 
     void run();
 };
