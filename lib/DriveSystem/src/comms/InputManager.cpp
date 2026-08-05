@@ -53,6 +53,9 @@ void InputManager::run() {
                     .z = 0.0f
                 };
                 has_new_data = true;
+                continue;
+            } else if (data_char.equals("--force-shutdown")) {
+                force_shutdown = true;
             }
 
             // todo make Coordinate_t objects and parse them
