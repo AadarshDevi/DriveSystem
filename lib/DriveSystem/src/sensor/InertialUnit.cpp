@@ -14,7 +14,7 @@
 InertialUnit::InertialUnit(int i2c_scl_pin, int i2c_sda_pin) {
     // Initialize I2C
     Serial.println("[Before] Initializing Wire");
-    Wire.begin(i2c_scl_pin, i2c_sda_pin, static_cast<int>(1E5)); // 1E5 = 100,000 or 100kHz to steadily upload code
+    Wire.begin(i2c_sda_pin, i2c_scl_pin, static_cast<int>(1E5)); // 1E5 = 100,000 or 100kHz to steadily upload code
     Serial.println("[After] Wire Initialized");
 
     // Initialize MPU6050
