@@ -53,6 +53,8 @@ void run_imu(void *p);
 
 void run_wheel_encoder(void *p);
 
+void run_intelli_sense(void *p);
+
 void setup() {
     // Set basic info
     Serial.begin(115200);
