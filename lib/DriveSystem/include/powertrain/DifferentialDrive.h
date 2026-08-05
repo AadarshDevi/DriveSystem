@@ -10,7 +10,10 @@
 #include "motor/RawMotor.h"
 
 class DifferentialDrive {
-    std::vector<RawMotor> motors;
+    RawMotor left_omni;
+    RawMotor right_omni;
+    RawMotor left_mecanum;
+    RawMotor right_mecanum;
 
 public:
     DifferentialDrive(
