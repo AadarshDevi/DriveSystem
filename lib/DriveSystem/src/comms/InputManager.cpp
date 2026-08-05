@@ -43,13 +43,13 @@ void InputManager::run() {
                 // --set-location x0 y0 x1 y1
 
                 base_location = {
-                    .x = data_char.toFloat(),
-                    .y = Serial.readStringUntil(' ').toFloat(),
+                    .x = Serial.parseFloat(),
+                    .y = Serial.parseFloat(),
                     .z = 0.0f
                 };
                 target_location = {
-                    .x = data_char.toFloat(),
-                    .y = Serial.readStringUntil(' ').toFloat(),
+                    .x = Serial.parseFloat(),
+                    .y = Serial.parseFloat(),
                     .z = 0.0f
                 };
                 has_new_data = true;
@@ -59,8 +59,8 @@ void InputManager::run() {
             if (data_write) {
                 Coordinate_t coordinate = {
                     .x = data_char.toFloat(),
-                    .y = Serial.readStringUntil(' ').toFloat(),
-                    .z = Serial.readStringUntil(' ').toFloat()
+                    .y = Serial.parseFloat(),
+                    .z = Serial.parseFloat(),
                 };
                 coordinateList.add(coordinate);
             }
