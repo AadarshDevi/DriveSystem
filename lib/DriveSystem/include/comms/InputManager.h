@@ -18,8 +18,8 @@ class InputManager {
 private:
     InputMode inputMode;
     CoordinateList coordinateList;
-    Coordinate_t base_location;
-    Coordinate_t target_location;
+    Coordinate_t base_location{};
+    Coordinate_t target_location{};
     bool has_new_data = false;
 
 public:
