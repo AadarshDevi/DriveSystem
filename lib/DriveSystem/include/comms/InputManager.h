@@ -4,8 +4,10 @@
 
 #ifndef DRIVESYSTEM_INPUTMANAGER_H
 #define DRIVESYSTEM_INPUTMANAGER_H
-#include "system/SystemMode.h"
 #include "navigation/CoordinateList.h"
+#include "navigation/Navigation.h"
+#include "system/SystemMode.h"
+
 
 enum InputMode {
     REMOTE,
