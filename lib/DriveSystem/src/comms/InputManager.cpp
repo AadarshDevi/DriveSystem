@@ -8,6 +8,7 @@
 
 #include "navigation/CoordinateList.h"
 #include "system/SystemMode.h"
+#include "navigation/Navigation.h"
 
 
 InputManager::InputManager(SystemMode system_mode) {
