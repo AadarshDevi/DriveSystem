@@ -73,5 +73,13 @@ void InputManager::run() {
 Trajectory2_t InputManager::getNewData() {
     Trajectory2_t trajectory;
 
-Coordinate_t InputManager::getTarget() {
+    if (!has_new_data) {
+        trajectory = {
+            {.x = -0.19474, .y = -0.19474, .z = -0.19474},
+            {.x = -0.19474, .y = -0.19474, .z = -0.19474}
+        };
+    }
+    has_new_data = false;
+    trajectory = {base_location, target_location};
+    return trajectory;
 }
