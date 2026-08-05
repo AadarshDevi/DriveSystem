@@ -124,6 +124,7 @@ void setup() {
             0);
     } else if (system_mode == REMOTE_CONTROL) {
         Serial.printf(send_mode, system_mode, drive_mode);
+        DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mechanum, right_mechanum);
     }
 }
 
