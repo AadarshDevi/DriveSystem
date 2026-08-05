@@ -138,6 +138,7 @@ void setup() {
 
 void run_imu(void *pvParameters) {
     InertialUnit &imu = *static_cast<InertialUnit *>(pvParameters);
+    Serial.println("[Powertrain::Running] InertialUnit");
     imu.run();
 }
 
@@ -147,15 +148,18 @@ void loop() {
 
 void run_input_manager(void *pvParameters) {
     InputManager &inputManager = *static_cast<InputManager *>(pvParameters);
+    Serial.println("[Powertrain::Running] InputManager");
     inputManager.run();
 }
 
 void run_wheel_encoder(void *pvParameters) {
     WheelEncoder &encoder = *static_cast<WheelEncoder *>(pvParameters);
+    Serial.println("[Powertrain::Running] WheelEncoder");
     encoder.run();
 }
 
 void run_intelli_sense(void *pvParameters) {
     IntelliSense &intelli_sense = *static_cast<IntelliSense *>(pvParameters);
+    Serial.println("[Powertrain::Running] IntelliSense");
     intelli_sense.run();
 }
