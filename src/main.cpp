@@ -69,17 +69,6 @@ void setup() {
     }
     Serial.println("[After] Semaphore Initialized");
 
-    // set imu
-    static InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN);
-
-    if (imu.ready()) {
-        system_mode = AUTONOMOUS;
-    } else {
-        system_mode = REMOTE_CONTROL;
-    }
-
-    static WheelEncoder encoder(WHEEL_ENCODER_PIN);
-
     const char *send_mode = "[Powertrain] --sys-mode=%s --drive-mode=%s\n";
 
     InputManager inputManager(system_mode);
@@ -94,6 +83,8 @@ void setup() {
     );
 
     if (system_mode == AUTONOMOUS) {
+        static InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN, mutex);
+        static WheelEncoder encoder(WHEEL_ENCODER_PIN);
         xTaskCreatePinnedToCore( // imu ready
             run_imu,
             "run_imu",
