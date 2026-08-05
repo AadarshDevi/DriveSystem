@@ -17,9 +17,8 @@ class DifferentialDrive {
 
 public:
     DifferentialDrive(
-        int new_wheelCount,
-        std::vector<std::vector<int> > new_motorPins,
-        std::vector<int> new_powerInput
+        RawMotor &left_omni, RawMotor &right_omni,
+        RawMotor &left_mecanum, RawMotor &right_mecanum
     );
 
     void debugPower(int powerInput) const;
