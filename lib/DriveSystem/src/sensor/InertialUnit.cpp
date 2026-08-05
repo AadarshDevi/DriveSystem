@@ -168,5 +168,9 @@ bool InertialUnit::is_dmp_ready() const {
 }
 
 Orientation_t InertialUnit::getOrientation() {
-    return internal_current_orientation;
+    Orientation_t orientation = {};
+    if (MutexGuard lock{mutex}) {
+        orientation = internal_current_orientation;
+    }
+    return orientation;
 }
