@@ -78,6 +78,8 @@ private:
     VectorFloat gravity;
     float ypr[3] = {0.0f, 0.0f, 0.0f};
 
+    SemaphoreHandle_t &mutex;
+
     bool imu_usable = false;
 };
 
