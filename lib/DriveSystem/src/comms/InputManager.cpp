@@ -29,7 +29,7 @@ void InputManager::run() {
 
     bool data_write = false;
     for (;;) {
-        Serial.println("[Powertrain::InputManager] Forever Loop...");
+        // Serial.println("[Powertrain::InputManager] Forever Loop...");
         while (Serial.available() > 0) {
             Serial.println("[Powertrain::InputManager] Reading Serial...");
             String data_char = Serial.readStringUntil(' ');
