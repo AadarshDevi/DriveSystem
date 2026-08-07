@@ -83,8 +83,8 @@ void setup() {
     );
 
     if (system_mode == AUTONOMOUS) {
-        static InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN, mutex);
         static WheelEncoder encoder(WHEEL_ENCODER_PIN);
+
         xTaskCreatePinnedToCore( // imu ready
             run_imu,
             "run_imu",
