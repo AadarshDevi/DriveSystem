@@ -41,6 +41,10 @@ void IntelliSense::run() {
         float starting_angle = inertialUnit.getOrientation().yaw;
         float target_angle = normalizeAngle(starting_angle - trajectory.angle);
         const float delta_angle = 2.3f;
+
+        float current_angle = 0.0f;
+        float error_angle = 0.0f;
+        differentialDrive.enableDrive(true);
         while (
             inertialUnit.getOrientation().yaw > target_angle - delta_angle &&
             inertialUnit.getOrientation().yaw < target_angle + delta_angle
