@@ -12,7 +12,7 @@ DifferentialDrive::DifferentialDrive(
     RawMotor &left_omni, RawMotor &right_omni,
     RawMotor &left_mecanum, RawMotor &right_mecanum
 ) : left_omni(left_omni), right_omni(right_omni), left_mecanum(left_mecanum), right_mecanum(right_mecanum) {
-    setPower(100);
+    setPower(200);
 }
 
 void DifferentialDrive::setPower(int power) {
