@@ -23,7 +23,7 @@ static bool mpu_working = false;
 static bool wheel_encoder_working = false;
 
 // System > Drive
-#define WHEEL_ENCODER_PIN 34
+#define WHEEL_ENCODER_PIN 36
 static int dist_to_travel = 0;
 static volatile int dist_travelled = 0;
 
