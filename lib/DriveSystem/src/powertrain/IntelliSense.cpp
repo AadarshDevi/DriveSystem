@@ -70,6 +70,8 @@ void IntelliSense::run() {
         }
         differentialDrive.stop();
 
+        differentialDrive.enableDrive(true);
+
         float target_distance = trajectory.distance;
         // const float delta_dist = 2.3f; // cm
         while (target_distance < wheelEncoder.getDistanceTravelled()) {
