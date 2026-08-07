@@ -13,7 +13,7 @@
 #include "lock/MutexGuard.h"
 
 
-InertialUnit::InertialUnit(int i2c_scl_pin, int i2c_sda_pin, SemaphoreHandle_t &mutex) : mutex(mutex) {
+InertialUnit::InertialUnit(int i2c_sda_pin, int i2c_scl_pin, SemaphoreHandle_t &mutex) : mutex(mutex) {
     // Initialize I2C
     Serial.println("[Before] Initializing Wire");
     Wire.begin(i2c_sda_pin, i2c_scl_pin, static_cast<int>(1E5)); // 1E5 = 100,000 or 100kHz to steadily upload code
