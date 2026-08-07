@@ -31,9 +31,9 @@ public:
 
     void stop();
 
-    void run();
     void run() const;
 
+    void enableDrive(bool enableMovement);
 
     //
     // void setPower(int new_motorNum, int new_power);
