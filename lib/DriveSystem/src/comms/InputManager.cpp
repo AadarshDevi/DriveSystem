@@ -12,7 +12,7 @@
 
 
 InputManager::InputManager(SystemMode system_mode) : coordinateList() {
-    if (system_mode == REMOTE_CONTROL) {
+    if (system_mode == MANUAL) {
         inputMode = REMOTE;
     } else if (system_mode == AUTONOMOUS) {
         inputMode = SYSTEM;

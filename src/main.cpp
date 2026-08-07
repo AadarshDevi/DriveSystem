@@ -15,7 +15,7 @@ SemaphoreHandle_t mutex;
 
 
 // System
-static SystemMode system_mode = SystemMode::REMOTE_CONTROL;
+static SystemMode system_mode = SystemMode::MANUAL;
 static DriveMode drive_mode = DriveMode::FOCUSED;
 
 // System > Enabler
@@ -122,7 +122,7 @@ void setup() {
             1,
             nullptr,
             0);
-    } else if (system_mode == REMOTE_CONTROL) {
+    } else if (system_mode == MANUAL) {
         Serial.printf(send_mode, system_mode, drive_mode);
         DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mechanum, right_mechanum);
     }
