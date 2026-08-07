@@ -62,7 +62,7 @@ void DifferentialDrive::stop() {
     run();
 }
 
-void DifferentialDrive::run() {
+void DifferentialDrive::run() const {
     left_omni.run();
     right_omni.run();
     left_mecanum.run();
