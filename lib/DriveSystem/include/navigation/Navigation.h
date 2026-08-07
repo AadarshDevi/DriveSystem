@@ -36,11 +36,8 @@ struct Trajectory2_t {
         float dx = final.x - initial.x;
         float dy = final.y - initial.y;
 
-        distance = sqrt(
-            pow(final.x - initial.x, 2) +
-            pow(final.y - initial.y, 2)
-        );
-        angle = atan((final.y - initial.y) / (final.x - initial.x)) * (180.0f / M_PI);
+        distance = sqrt(dx * dx + dy * dy);
+        angle = atan2f(dy, dx) * (180.0f / M_PI);
     }
 
     float getAngle() {
