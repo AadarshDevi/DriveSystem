@@ -44,8 +44,8 @@ static RawMotor left_omnidir(14, 19, 32, power, absMinPower, absMaxPower, shutdo
 static RawMotor right_omnidir(13, 26, 33, power, absMinPower, absMaxPower, shutdownPower);
 
 // MPU-6050
-#define I2C_SCL_PIN 21
-#define I2C_SDA_PIN 22
+#define I2C_SDA_PIN 21
+#define I2C_SCL_PIN 22
 
 void run_input_manager(void *p);
 
