@@ -84,8 +84,8 @@ Trajectory2_t InputManager::getNewData() {
 
     if (!has_new_data) {
         trajectory = {
-            {.x = -0.19474, .y = -0.19474, .z = -0.19474},
-            {.x = -0.19474, .y = -0.19474, .z = -0.19474}
+            {.x = 0, .y = 0, .z = 0},
+            {.x = 0, .y = 0, .z = 0}
         };
     }
     has_new_data = false;
