@@ -21,7 +21,7 @@ public:
     /*
      Constructor
      */
-    InertialUnit(int i2c_scl_pin, int i2c_sda_pin, SemaphoreHandle_t &mutex);
+    InertialUnit(int i2c_sda_pin, int i2c_scl_pin, SemaphoreHandle_t &mutex);
 
     /*
      Reset IMU Offsets
