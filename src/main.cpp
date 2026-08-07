@@ -110,17 +110,10 @@ void setup() {
             nullptr,
             1
         );
-        if (drive_mode == FOCUSED) {
-            // code
-            Serial.printf(send_mode, system_mode, drive_mode);
-        } else if (drive_mode == INTELLI_SENSE) {
-            // code
-            Serial.printf(send_mode, system_mode, drive_mode);
-        }
 
-        DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mechanum, right_mechanum);
+        static DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mechanum, right_mechanum);
 
-        IntelliSense intelliSense(imu, encoder, inputManager, differentialDrive);
+        static IntelliSense intelliSense(imu, encoder, inputManager, differentialDrive);
         xTaskCreatePinnedToCore(
             run_intelli_sense,
             "run_intelli_sense",
