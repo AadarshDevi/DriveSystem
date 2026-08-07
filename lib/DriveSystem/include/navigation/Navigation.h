@@ -6,6 +6,7 @@
 #define DRIVESYSTEM_NAVIGATION_H
 
 #include <Arduino.h>
+#include <math.h>
 
 typedef struct {
     float x;
@@ -32,6 +33,9 @@ struct Trajectory2_t {
     }
 
     Trajectory2_t(const Coordinate_t initial, const Coordinate_t final) {
+        float dx = final.x - initial.x;
+        float dy = final.y - initial.y;
+
         distance = sqrt(
             pow(final.x - initial.x, 2) +
             pow(final.y - initial.y, 2)
