@@ -68,3 +68,10 @@ void DifferentialDrive::run() const {
     left_mecanum.run();
     right_mecanum.run();
 }
+
+void DifferentialDrive::enableDrive(bool enableMovement) {
+    left_omni.enableRotation(enableMovement);
+    left_mecanum.enableRotation(enableMovement);
+    right_omni.enableRotation(enableMovement);
+    right_mecanum.enableRotation(enableMovement);
+}
