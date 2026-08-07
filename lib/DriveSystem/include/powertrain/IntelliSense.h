@@ -27,6 +27,8 @@ public:
     );
 
     void run();
+
+    float normalizeAngle(float angle);
 };
 
 #endif //DRIVESYSTEM_INTELLISENSE_H
