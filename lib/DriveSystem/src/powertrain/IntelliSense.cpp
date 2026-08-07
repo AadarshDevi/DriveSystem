@@ -23,6 +23,8 @@ IntelliSense::IntelliSense(
 void IntelliSense::run() {
     for (;;) {
         if (!inputManager.hasNewData()) {
+            differentialDrive.stop();
+            wheelEncoder.resetDistance();
             vTaskDelay(pdMS_TO_TICKS(10));
             continue;
         }
