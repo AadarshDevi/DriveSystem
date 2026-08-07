@@ -30,8 +30,8 @@ void IntelliSense::run() {
         }
 
         Trajectory2_t trajectory = inputManager.getNewData();
-        Serial.printf("Angle:%.2f", trajectory.angle);
-        Serial.printf("\tDistance:%.2f", trajectory.distance);
+        Serial.printf("Angle: %.2f", trajectory.angle);
+        Serial.printf("\tDistance: %.2f\n", trajectory.distance);
 
         float target_angle = inertialUnit.getOrientation().yaw + trajectory.angle;
         const float delta_angle = 2.3f;
