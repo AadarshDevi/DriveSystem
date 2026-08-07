@@ -105,7 +105,7 @@ void setup() {
             run_wheel_encoder,
             "run_wheel_encoder",
             4096,
-            nullptr,
+            &encoder,
             1,
             nullptr,
             1
