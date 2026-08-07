@@ -33,7 +33,13 @@ void IntelliSense::run() {
         Serial.printf("Angle: %.2f", trajectory.angle);
         Serial.printf("\tDistance: %.2f\n", trajectory.distance);
 
-        float target_angle = inertialUnit.getOrientation().yaw + trajectory.angle;
+        if (trajectory.angle == 0.0f || trajectory.distance == 0.0f) {
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
+
+        float starting_angle = inertialUnit.getOrientation().yaw;
+        float target_angle = normalizeAngle(starting_angle - trajectory.angle);
         const float delta_angle = 2.3f;
         while (
             inertialUnit.getOrientation().yaw > target_angle - delta_angle &&
