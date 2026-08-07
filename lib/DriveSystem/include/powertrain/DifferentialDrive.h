@@ -32,6 +32,8 @@ public:
     void stop();
 
     void run();
+    void run() const;
+
 
     //
     // void setPower(int new_motorNum, int new_power);
