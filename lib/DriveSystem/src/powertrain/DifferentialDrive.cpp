@@ -59,6 +59,7 @@ void DifferentialDrive::stop() {
     right_omni.stop();
     left_mecanum.stop();
     right_mecanum.stop();
+    run();
 }
 
 void DifferentialDrive::run() {
