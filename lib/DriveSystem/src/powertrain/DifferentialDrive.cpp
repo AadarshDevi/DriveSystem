@@ -40,18 +40,17 @@ void DifferentialDrive::drive(float distance) {
 void DifferentialDrive::rotate(float angle) {
     if (angle > 0) {
         // right
-        left_omni.forward();
-        right_omni.reverse();
-        left_mecanum.forward();
-        right_mecanum.reverse();
+        left_omni.reverse();
+        left_mecanum.reverse();
+        right_omni.forward();
+        right_mecanum.forward();
     } else {
         // left
-        right_omni.forward();
-        left_omni.reverse();
-        right_mecanum.forward();
-        left_mecanum.reverse();
+        left_omni.forward();
+        left_mecanum.forward();
+        right_omni.reverse();
+        right_mecanum.reverse();
     }
-    // code
     run();
 }
 
