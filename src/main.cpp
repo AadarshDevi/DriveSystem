@@ -69,9 +69,16 @@ void setup() {
     }
     Serial.println("[After] Semaphore Initialized");
 
-    const char *send_mode = "[Powertrain] --sys-mode=%s --drive-mode=%s\n";
+    static InertialUnit imu(I2C_SDA_PIN, I2C_SCL_PIN, mutex);
+    if (imu.ready()) {
+        system_mode = AUTONOMOUS;
+    } else {
+        system_mode = MANUAL;
+    }
 
-    InputManager inputManager(system_mode);
+    const char *send_mode = "[Powertrain] --sys-mode=%d --drive-mode=%d\n";
+
+    static InputManager inputManager(system_mode);
     xTaskCreatePinnedToCore(
         run_input_manager,
         "run_input_manager",
