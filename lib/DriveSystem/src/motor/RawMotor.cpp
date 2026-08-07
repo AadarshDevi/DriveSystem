@@ -181,3 +181,7 @@ void RawMotor::debugMovement() const {
     if (!enableDebug) return;
     Serial.printf("Rotation:%d Reverse:%d\r\n", rotationEnabled, reverseRotation);
 }
+
+void RawMotor::enableRotation(bool enabled) {
+    rotationEnabled = enabled;
+}
