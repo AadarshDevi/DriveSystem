@@ -74,10 +74,19 @@ void IntelliSense::run() {
 
         float target_distance = trajectory.distance;
         // const float delta_dist = 2.3f; // cm
-        while (target_distance < wheelEncoder.getDistanceTravelled()) {
+        while (wheelEncoder.getDistanceTravelled() < target_distance) {
+            Serial.printf(
+                "Encoder: %.2f / %.2f\n",
+                wheelEncoder.getDistanceTravelled(),
+                target_distance
+            );
+
             differentialDrive.drive(target_distance);
+            vTaskDelay(pdMS_TO_TICKS(10));
         }
 
+        differentialDrive.stop();
+        wheelEncoder.resetDistance();
         vTaskDelay(pdMS_TO_TICKS(10));
     }
     // code
