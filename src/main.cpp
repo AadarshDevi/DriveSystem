@@ -58,7 +58,7 @@ void run_intelli_sense(void *p);
 void setup() {
     // Set basic info
     Serial.begin(115200);
-    delay(10000);
+    delay(1000);
 
     // set semaphore
     Serial.println("[Before] Initializing Semaphore");
