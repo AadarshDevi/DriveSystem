@@ -33,7 +33,7 @@ void IntelliSense::run() {
         Serial.printf("Angle: %.2f", trajectory.angle);
         Serial.printf("\tDistance: %.2f\n", trajectory.distance);
 
-        if (trajectory.angle == 0.0f || trajectory.distance == 0.0f) {
+        if (trajectory.angle == 0.0f && trajectory.distance == 0.0f) {
             vTaskDelay(pdMS_TO_TICKS(10));
             continue;
         }
