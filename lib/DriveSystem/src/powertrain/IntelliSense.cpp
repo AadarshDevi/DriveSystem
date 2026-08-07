@@ -91,3 +91,10 @@ void IntelliSense::run() {
     }
     // code
 }
+
+
+float IntelliSense::normalizeAngle(float angle) {
+    while (angle > 180.0f) angle -= 360.0f;
+    while (angle < -180.0f) angle += 360.0f;
+    return angle;
+}
