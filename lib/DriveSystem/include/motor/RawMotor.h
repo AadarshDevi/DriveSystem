@@ -277,6 +277,12 @@ public:
      * @param new_power the power of the motor
      */
     void powerVal(int new_power);
+
+    /**
+     * enable or disable the motor from turning
+     * @param enabled can the motor turn
+     */
+    void enableRotation(bool enabled);
 };
 
 #endif
