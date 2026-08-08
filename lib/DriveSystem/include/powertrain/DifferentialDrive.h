@@ -25,9 +25,9 @@ public:
     //
     void setPower(int new_power);
 
-    void drive(float distance);
+    void drive(int direction);
 
-    void rotate(float angle);
+    void rotate(int direction);
 
     void stop();
 
