@@ -177,17 +177,11 @@ Orientation_t InertialUnit::getOrientation() {
     return orientation;
 }
 
-void InertialUnit::normalize(Orientation_t orientation) {
-    while (orientation.yaw > 180) {
-        orientation.yaw -= 360;
-        vTaskDelay(10);
+void InertialUnit::normalize() {
+    while (internal_current_orientation.yaw > 180) {
+        internal_current_orientation.yaw -= 360;
     }
-    while (orientation.yaw < -180) {
-        orientation.yaw += 360;
-        vTaskDelay(10);
+    while (internal_current_orientation.yaw < -180) {
+        internal_current_orientation.yaw += 360;
     }
-}
-
-void InertialUnit::normalizeOrientation() {
-    normalize(internal_current_orientation);
 }
