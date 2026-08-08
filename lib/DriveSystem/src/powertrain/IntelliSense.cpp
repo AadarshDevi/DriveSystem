@@ -9,6 +9,9 @@
 #include "sensor/InertialUnit.h"
 #include "sensor/WheelEncoder.h"
 
+#define TURN_RIGHT 1
+#define TURN_LEFT 2
+
 IntelliSense::IntelliSense(
     InertialUnit &inertialUnit,
     WheelEncoder &wheelEncoder,
