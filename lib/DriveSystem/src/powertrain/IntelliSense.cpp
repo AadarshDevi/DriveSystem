@@ -39,9 +39,10 @@ void IntelliSense::run() {
         }
 
         float starting_angle = inertialUnit.getOrientation().yaw;
-        float target_angle = normalizeAngle(starting_angle - trajectory.angle);
-        const float delta_angle = 2.3f;
         float target_angle = normalizeAngle(trajectory.angle);
+        constexpr float delta_angle = 1.0f;
+
+        int rotation_direction = 0;
 
         float current_angle = 0.0f;
         float error_angle = 0.0f;
