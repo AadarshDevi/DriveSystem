@@ -76,6 +76,7 @@ void IntelliSense::run() {
         differentialDrive.setPower(200 + 10, 200);
 
         differentialDrive.enableDrive(true);
+        wheelEncoder.resetDistance();
 
         float target_distance = trajectory.distance;
         // const float delta_dist = 2.3f; // cm
