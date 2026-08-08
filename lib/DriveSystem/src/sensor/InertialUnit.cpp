@@ -150,7 +150,7 @@ void InertialUnit::run() {
         internal_current_orientation.pitch = orientation.pitch - base_orientation.pitch;
         internal_current_orientation.yaw = orientation.yaw - base_orientation.yaw;
 
-        normalizeOrientation();
+        normalize();
 
         // ~100Hz
         vTaskDelay(pdMS_TO_TICKS(10));
