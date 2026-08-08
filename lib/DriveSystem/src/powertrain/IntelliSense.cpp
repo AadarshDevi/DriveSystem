@@ -89,7 +89,8 @@ void IntelliSense::run() {
                 target_distance + delta_distance
             );
 
-            differentialDrive.drive(static_cast<int>(target_distance));
+            // todo: nothing to fix. if rover has to go back, its not possible because it can only go forward
+            differentialDrive.drive(1);
             vTaskDelay(pdMS_TO_TICKS(10));
         }
 
