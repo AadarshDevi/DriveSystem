@@ -38,9 +38,9 @@ constexpr int absMaxPower = 175; // max power limit
 constexpr int shutdownPower = 0; // shutdown motor power - for emergency uses
 
 // Motor
-static RawMotor left_mechanum(27, 23, 4, power, absMinPower, absMaxPower, shutdownPower);
+static RawMotor left_mechanum(27, 23, 4, (power + 10), absMinPower, absMaxPower, shutdownPower);
 static RawMotor right_mechanum(12, 18, 25, power, absMinPower, absMaxPower, shutdownPower);
-static RawMotor left_omnidir(14, 19, 32, power, absMinPower, absMaxPower, shutdownPower);
+static RawMotor left_omnidir(14, 19, 32, (power + 10), absMinPower, absMaxPower, shutdownPower);
 static RawMotor right_omnidir(13, 26, 33, power, absMinPower, absMaxPower, shutdownPower);
 
 // MPU-6050
