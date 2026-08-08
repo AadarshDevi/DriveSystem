@@ -44,8 +44,14 @@ void IntelliSense::run() {
 
         int rotation_direction = 0;
 
-        float current_angle = 0.0f;
-        float error_angle = 0.0f;
+        if (target_angle <= normalizeAngle(starting_angle + 180)) {
+            rotation_direction = 1;
+        } else if (target_angle > normalizeAngle(starting_angle + 180)) {
+            rotation_direction = -1;
+        } else {
+            rotation_direction = 0;
+        }
+
         differentialDrive.enableDrive(true);
 
             Serial.printf(
