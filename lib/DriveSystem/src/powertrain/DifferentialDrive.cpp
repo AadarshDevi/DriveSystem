@@ -40,16 +40,16 @@ void DifferentialDrive::drive(int direction) {
 void DifferentialDrive::rotate(int direction) {
     if (direction > 0) {
         // right
-        left_omni.forward();
-        left_mecanum.forward();
-        right_omni.reverse();
-        right_mecanum.reverse();
-    } else {
-        // left
         left_omni.reverse();
         left_mecanum.reverse();
         right_omni.forward();
         right_mecanum.forward();
+    } else {
+        // left
+        left_omni.forward();
+        left_mecanum.forward();
+        right_omni.reverse();
+        right_mecanum.reverse();
     }
     run();
 }
