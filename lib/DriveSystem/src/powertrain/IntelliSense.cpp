@@ -85,7 +85,7 @@ void IntelliSense::run() {
                 target_distance
             );
 
-            differentialDrive.drive(target_distance);
+            differentialDrive.drive(static_cast<int>(target_distance));
             vTaskDelay(pdMS_TO_TICKS(10));
         }
 
