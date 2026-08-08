@@ -45,19 +45,6 @@ void IntelliSense::run() {
         float current_angle = 0.0f;
         float error_angle = 0.0f;
         differentialDrive.enableDrive(true);
-        while (
-            // inertialUnit.getOrientation().yaw < target_angle - delta_angle ||
-            // inertialUnit.getOrientation().yaw > target_angle + delta_angle
-            // fabsf(target_angle - inertialUnit.getOrientation().yaw) > delta_angle
-            // true
-            fabsf(normalizeAngle(target_angle - inertialUnit.getOrientation().yaw)) > delta_angle
-        ) {
-            // current_angle =;
-            // error_angle =;
-            //
-            // if () {
-            //     break;
-            // }
 
             Serial.printf(
                 "Current: %.2f Target: %.2f Error: %.2f\n",
