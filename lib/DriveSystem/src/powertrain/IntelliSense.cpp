@@ -80,9 +80,11 @@ void IntelliSense::run() {
         // const float delta_dist = 2.3f; // cm
         while (wheelEncoder.getDistanceTravelled() < target_distance) {
             Serial.printf(
-                "Encoder: %.2f / %.2f\n",
+                "Encoder: %.2f / %.2f + %.2f = %.2f\n",
                 wheelEncoder.getDistanceTravelled(),
-                target_distance
+                target_distance,
+                delta_distance,
+                target_distance + delta_distance
             );
 
             differentialDrive.drive(static_cast<int>(target_distance));
