@@ -52,14 +52,15 @@ void IntelliSense::run() {
             // inertialUnit.getOrientation().yaw < target_angle - delta_angle ||
             // inertialUnit.getOrientation().yaw > target_angle + delta_angle
             // fabsf(target_angle - inertialUnit.getOrientation().yaw) > delta_angle
-            true
+            // true
+            fabsf(normalizeAngle(target_angle - inertialUnit.getOrientation().yaw)) > delta_angle
         ) {
-            current_angle = inertialUnit.getOrientation().yaw;
-            error_angle = normalizeAngle(target_angle - current_angle);
-
-            if (fabsf(error_angle) <= delta_angle) {
-                break;
-            }
+            // current_angle =;
+            // error_angle =;
+            //
+            // if () {
+            //     break;
+            // }
 
             Serial.printf(
                 "Current: %.2f Target: %.2f Error: %.2f\n",
