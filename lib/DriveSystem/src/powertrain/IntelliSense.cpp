@@ -107,3 +107,7 @@ float IntelliSense::normalizeAngle(float angle) {
     while (angle < -180.0f) angle += 360.0f;
     return angle;
 }
+
+
+// --set-location 0 0 50 50
+// --set-location 50 50 0 0
