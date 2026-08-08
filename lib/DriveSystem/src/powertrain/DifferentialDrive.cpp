@@ -28,7 +28,7 @@ void DifferentialDrive::drive(int direction) {
         right_omni.forward();
         left_mecanum.forward();
         right_mecanum.forward();
-    } else {
+    } else if (direction < 0) {
         left_omni.reverse();
         right_omni.reverse();
         left_mecanum.reverse();
