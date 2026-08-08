@@ -38,9 +38,9 @@ constexpr int absMaxPower = 175; // max power limit
 constexpr int shutdownPower = 0; // shutdown motor power - for emergency uses
 
 // Motor
-static RawMotor left_mechanum(27, 23, 4, (power + 10), absMinPower, absMaxPower, shutdownPower);
-static RawMotor right_mechanum(12, 18, 25, power, absMinPower, absMaxPower, shutdownPower);
+static RawMotor left_mecanum(27, 23, 4, (power + 10), absMinPower, absMaxPower, shutdownPower);
 static RawMotor left_omnidir(14, 19, 32, (power + 10), absMinPower, absMaxPower, shutdownPower);
+static RawMotor right_mecanum(12, 18, 25, power, absMinPower, absMaxPower, shutdownPower);
 static RawMotor right_omnidir(13, 26, 33, power, absMinPower, absMaxPower, shutdownPower);
 
 // MPU-6050
@@ -111,7 +111,7 @@ void setup() {
             1
         );
 
-        static DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mechanum, right_mechanum);
+        static DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mecanum, right_mecanum);
 
         static IntelliSense intelliSense(imu, encoder, inputManager, differentialDrive);
         xTaskCreatePinnedToCore(
@@ -124,7 +124,7 @@ void setup() {
             0);
     } else if (system_mode == MANUAL) {
         Serial.printf(send_mode, system_mode, drive_mode);
-        DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mechanum, right_mechanum);
+        DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mecanum, right_mecanum);
     }
 }
 
