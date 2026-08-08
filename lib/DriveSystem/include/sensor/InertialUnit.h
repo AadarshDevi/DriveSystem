@@ -64,9 +64,7 @@ public:
 
     Orientation_t getOrientation();
 
-    void normalize(Orientation_t orientation);
-
-    void normalizeOrientation();
+    void normalize();
 
 private:
     MPU6050 mpu;
