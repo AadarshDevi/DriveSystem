@@ -61,10 +61,16 @@ void IntelliSense::run() {
                 error_angle
             );
 
-            differentialDrive.rotate(static_cast<int>(target_angle));
+            if (fabsf(normalizeAngle(inertialUnit.getOrientation().yaw - target_angle)) < 30) {
+                differentialDrive.setPower(100 + 10, 100);
+            }
+
+            differentialDrive.rotate(rotation_direction);
             vTaskDelay(pdMS_TO_TICKS(10));
         }
         differentialDrive.stop();
+
+        differentialDrive.setPower(200 + 10, 200);
 
         differentialDrive.enableDrive(true);
 
