@@ -150,6 +150,8 @@ void InertialUnit::run() {
         internal_current_orientation.pitch = orientation.pitch - base_orientation.pitch;
         internal_current_orientation.yaw = orientation.yaw - base_orientation.yaw;
 
+        normalizeOrientation();
+
         // ~100Hz
         vTaskDelay(pdMS_TO_TICKS(10));
     }
@@ -173,4 +175,19 @@ Orientation_t InertialUnit::getOrientation() {
         orientation = internal_current_orientation;
     }
     return orientation;
+}
+
+void InertialUnit::normalize(Orientation_t orientation) {
+    while (orientation.yaw > 180) {
+        orientation.yaw -= 360;
+        vTaskDelay(10);
+    }
+    while (orientation.yaw < -180) {
+        orientation.yaw += 360;
+        vTaskDelay(10);
+    }
+}
+
+void InertialUnit::normalizeOrientation() {
+    normalize(internal_current_orientation);
 }
