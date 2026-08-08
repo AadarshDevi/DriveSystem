@@ -130,7 +130,10 @@ void setup() {
 
 void run_imu(void *pvParameters) {
     InertialUnit &imu = *static_cast<InertialUnit *>(pvParameters);
-    Serial.println("[Powertrain::Running] InertialUnit");
+    Serial.printf(
+        "[Powertrain::Running] InertialUnit >  Roll: %.2f, Pitch: %.2f, Yaw: %.2f\n",
+        imu.getOrientation().roll, imu.getOrientation().pitch, imu.getOrientation().yaw
+    );
     imu.run();
 }
 
