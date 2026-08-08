@@ -22,8 +22,8 @@ void DifferentialDrive::setPower(int power) {
     right_mecanum.setPower(power);
 }
 
-void DifferentialDrive::drive(float distance) {
-    if (distance > 0) {
+void DifferentialDrive::drive(int direction) {
+    if (direction > 0) {
         left_omni.forward();
         right_omni.forward();
         left_mecanum.forward();
@@ -37,8 +37,8 @@ void DifferentialDrive::drive(float distance) {
     run();
 }
 
-void DifferentialDrive::rotate(float angle) {
-    if (angle > 0) {
+void DifferentialDrive::rotate(int direction) {
+    if (direction > 0) {
         // right
         left_omni.forward();
         left_mecanum.forward();
