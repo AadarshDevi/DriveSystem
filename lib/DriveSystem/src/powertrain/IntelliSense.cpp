@@ -69,7 +69,7 @@ void IntelliSense::run() {
                 error_angle
             );
 
-            differentialDrive.rotate(trajectory.angle);
+            differentialDrive.rotate(static_cast<int>(target_angle));
             vTaskDelay(pdMS_TO_TICKS(10));
         }
         differentialDrive.stop();
