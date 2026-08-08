@@ -75,3 +75,10 @@ void DifferentialDrive::enableDrive(bool enableMovement) {
     right_omni.enableRotation(enableMovement);
     right_mecanum.enableRotation(enableMovement);
 }
+
+void DifferentialDrive::setPower(int new_left_power, int new_right_power) {
+    left_omni.setPower(new_left_power);
+    left_mecanum.setPower(new_left_power);
+    right_omni.setPower(new_right_power);
+    right_mecanum.setPower(new_right_power);
+}
