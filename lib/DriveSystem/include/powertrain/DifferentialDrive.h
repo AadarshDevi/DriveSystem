@@ -25,6 +25,8 @@ public:
     //
     void setPower(int new_power);
 
+    void setPower(int new_left_power, int new_right_power);
+
     void drive(int direction);
 
     void rotate(int direction);
