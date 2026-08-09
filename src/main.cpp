@@ -47,13 +47,13 @@ static RawMotor right_omnidir(13, 26, 33, power, absMinPower, absMaxPower, shutd
 #define I2C_SDA_PIN 21
 #define I2C_SCL_PIN 22
 
-void run_input_manager(void *p);
+static void run_input_manager(void *pvParameters);
 
-void run_imu(void *p);
+static void run_imu(void *pvParameters);
 
-void run_wheel_encoder(void *p);
+static void run_wheel_encoder(void *pvParameters);
 
-void run_intelli_sense(void *p);
+static void run_intelli_sense(void *pvParameters);
 
 void setup() {
     // Set basic info
