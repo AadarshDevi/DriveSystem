@@ -9,7 +9,7 @@
 #include "powertrain/IntelliSense.h"
 #include "sensor/WheelEncoder.h"
 // FreeRTOS
-SemaphoreHandle_t mutex;
+static SemaphoreHandle_t mutex;
 
 // Navigation
 
