@@ -16,20 +16,20 @@ SemaphoreHandle_t mutex;
 
 // System
 static SystemMode system_mode = SystemMode::MANUAL;
-static DriveMode drive_mode = DriveMode::FOCUSED;
+// static DriveMode drive_mode = DriveMode::FOCUSED;
 
 // System > Enabler
-static bool mpu_working = false;
-static bool wheel_encoder_working = false;
+// static bool mpu_working = false;
+// static bool wheel_encoder_working = false;
 
 // System > Drive
 #define WHEEL_ENCODER_PIN 36
-static int dist_to_travel = 0;
-static volatile int dist_travelled = 0;
+//static int dist_to_travel = 0;
+//static volatile int dist_travelled = 0;
 
-static volatile Orientation_t external_current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
+//static volatile Orientation_t external_current_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f};
 // continuously set
-static Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
+//static Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
 
 // Motor > Power
 static int power = 128; // motor power
@@ -76,7 +76,7 @@ void setup() {
         system_mode = MANUAL;
     }
 
-    const char *send_mode = "[Powertrain] --sys-mode=%d --drive-mode=%d\n";
+    // const char *send_mode = "[Powertrain] --sys-mode=%d --drive-mode=%d\n";
 
     static InputManager inputManager(system_mode);
     xTaskCreatePinnedToCore(
@@ -123,8 +123,8 @@ void setup() {
             nullptr,
             0);
     } else if (system_mode == MANUAL) {
-        Serial.printf(send_mode, system_mode, drive_mode);
-        DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mecanum, right_mecanum);
+        // Serial.printf(send_mode, system_mode, drive_mode);
+        // DifferentialDrive differentialDrive(left_omnidir, right_omnidir, left_mecanum, right_mecanum);
     }
 }
 
