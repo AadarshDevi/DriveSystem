@@ -2,7 +2,7 @@
 #include <motor/RawMotor.h>                 // Custom Motor
 #include <sensor/InertialUnit.h>               // Custom IMU
 #include <system/SystemMode.h>              // Type of Data Transfer
-#include <system/DriveMode.h>               // Powertrain driving mode
+// #include <system/DriveMode.h>               // Powertrain driving mode
 #include <freertos/semphr.h>                // Semaphore
 #include <freertos/task.h>                  // xTaskCreate
 #include "comms/InputManager.h"
