@@ -44,7 +44,7 @@ void InputManager::run() {
             } else if (data_char.equals("--data-end")) {
                 data_write = false;
                 continue;
-            } else if (data_char.equals("--set-location")) {
+            } else if (data_char.equals("--set-location") && !has_new_data) {
                 // --set-location x0 y0 x1 y1
 
                 base_location = {
