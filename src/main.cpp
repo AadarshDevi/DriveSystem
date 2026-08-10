@@ -158,3 +158,12 @@ void run_intelli_sense(void *pvParameters) {
     Serial.println("[Powertrain::Running] IntelliSense");
     intelli_sense.run();
 }
+
+/*
+ * --set-location 0 0 20 0
+ * --set-location 20 0 20 20
+ * --set-location 20 20 40 20
+ * --set-location 40 20 40 0
+ */
+
+// --set-location 0 0 6 0 --set-location 6 0 6 6 --set-location 6 6 12 6 --set-location 12 6 12 0
