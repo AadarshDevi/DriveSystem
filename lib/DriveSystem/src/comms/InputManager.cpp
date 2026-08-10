@@ -32,6 +32,12 @@ void InputManager::run() {
         // Serial.println("[Powertrain::InputManager] Forever Loop...");
         while (Serial.available() > 0) {
             Serial.println("[Powertrain::InputManager] Reading Serial...");
+
+            if (has_new_data) {
+                vTaskDelay(pdMS_TO_TICKS(10));
+                continue;
+            }
+
             String data_char = Serial.readStringUntil(' ');
             data_char.trim();
 
@@ -44,7 +50,8 @@ void InputManager::run() {
             } else if (data_char.equals("--data-end")) {
                 data_write = false;
                 continue;
-            } else if (data_char.equals("--set-location") && !has_new_data) { // fixme this will not work
+            } else if (data_char.equals("--set-location") && !has_new_data) {
+                // fixme this will not work
                 // --set-location x0 y0 x1 y1
 
                 base_location = {
