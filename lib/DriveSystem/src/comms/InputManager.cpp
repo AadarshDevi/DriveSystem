@@ -61,6 +61,8 @@ void InputManager::run() {
                 continue;
             } else if (data_char.equals("--force-shutdown")) {
                 force_shutdown = true;
+            } else if (data_char.startsWith("--")) {
+                continue;
             }
 
             // todo make Coordinate_t objects and parse them
