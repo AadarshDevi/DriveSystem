@@ -32,7 +32,7 @@ static SystemMode system_mode = SystemMode::MANUAL;
 //static Orientation_t target_orientation = {.roll = 0.0f, .pitch = 0.0f, .yaw = 0.0f}; // main computer sets
 
 // Motor > Power
-static int power = 255; // motor power
+static int power = 200; // motor power
 constexpr int absMinPower = 0; // min power limit
 constexpr int absMaxPower = 255; // max power limit
 constexpr int shutdownPower = 0; // shutdown motor power - for emergency uses
