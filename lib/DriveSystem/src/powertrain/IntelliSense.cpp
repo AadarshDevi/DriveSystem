@@ -54,20 +54,11 @@ void IntelliSense::run() {
 
         differentialDrive.enableDrive(true);
 
+        if (trajectory.angle == 0.0f) {
+            continue;
+        }
+
         while (fabsf(normalizeAngle(inertialUnit.getOrientation().yaw - target_angle)) > delta_angle) {
-            Serial.printf(
-                "Current: %.2f, Target: %.2f, Trajectory: %.2f, Error: %.2f, Abs Error: %.2f\n",
-                inertialUnit.getOrientation().yaw,
-                target_angle,
-                trajectory.angle,
-                normalizeAngle(target_angle - inertialUnit.getOrientation().yaw),
-                fabsf(normalizeAngle(inertialUnit.getOrientation().yaw - target_angle))
-            );
-
-            // if (fabsf(normalizeAngle(inertialUnit.getOrientation().yaw - target_angle)) < 30) {
-            //     differentialDrive.setPower(100 + 10, 100);
-            // }
-
             differentialDrive.rotate(rotation_direction);
             vTaskDelay(pdMS_TO_TICKS(10));
         }
