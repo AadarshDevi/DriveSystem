@@ -33,6 +33,8 @@ struct Trajectory2_t {
     }
 
     Trajectory2_t(const Coordinate_t initial, const Coordinate_t final) {
+        Serial.printf("x0:%.2f, y0:%.2f, x1:%.2f, y1:%.2f\n", initial.x, initial.y, final.x, final.y);
+
         float dx = final.x - initial.x;
         float dy = final.y - initial.y;
 
