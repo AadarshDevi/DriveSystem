@@ -77,14 +77,6 @@ void IntelliSense::run() {
         }
 
         while (wheelEncoder.getDistanceTravelled() < target_distance + delta_distance) {
-            Serial.printf(
-                "Encoder: %.2f / %.2f + %.2f = %.2f\n",
-                wheelEncoder.getDistanceTravelled(),
-                target_distance,
-                delta_distance,
-                target_distance + delta_distance
-            );
-
             // todo: nothing to fix. if rover has to go back, its not possible because it can only go forward
             differentialDrive.drive(1);
             vTaskDelay(pdMS_TO_TICKS(10));
