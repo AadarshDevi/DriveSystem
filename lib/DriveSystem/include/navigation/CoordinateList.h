@@ -13,6 +13,7 @@ class CoordinateList {
 private:
     Coordinate_t target_coords[SIZE];
     int data_index = 0;
+    int index = 0;
     int target_index = 0;
 
 public:
