@@ -72,6 +72,10 @@ void IntelliSense::run() {
         const float target_distance = trajectory.distance;
         constexpr float delta_distance = 1.5f; // cm
 
+        if (target_distance >= 0.0f && target_distance < delta_distance) {
+            continue;
+        }
+
         while (wheelEncoder.getDistanceTravelled() < target_distance + delta_distance) {
             Serial.printf(
                 "Encoder: %.2f / %.2f + %.2f = %.2f\n",
