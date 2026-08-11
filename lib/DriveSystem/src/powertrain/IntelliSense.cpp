@@ -72,16 +72,13 @@ void IntelliSense::run() {
 
         differentialDrive.enableDrive(true);
 
-        if (trajectory.angle == 0.0f) {
-            continue;
-        }
-
+        //if (trajectory.angle != 0.0f) {
         while (fabsf(normalizeAngle(inertialUnit.getOrientation().yaw - target_angle)) > delta_angle) {
             differentialDrive.rotate(rotation_direction);
             vTaskDelay(pdMS_TO_TICKS(10));
         }
         differentialDrive.stop();
-
+        //}
         // differentialDrive.setPower(200 + 10, 200);
 
         differentialDrive.enableDrive(true);
