@@ -110,5 +110,11 @@ float IntelliSense::normalizeAngle(float angle) {
 }
 
 
-// --set-location 0 0 50 50
-// --set-location 50 50 0 0
+/*
+ * --set-location 0 0 50 0
+ * --set-location 50 0 50 -50
+ * --set-location 50 -50 100 -50
+ * --set-location 100 -50 100 0
+ */
+
+// --set-location 0 0 50 0 --set-location 50 0 50 -50 --set-location 50 -50 100 -50 --set-location 100 -50 100 0
