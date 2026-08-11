@@ -21,8 +21,8 @@ easy to implement.
 
 #### WheelEncoder
 
-The **_WheelEncoder_** calculates the distance traveled by the rover. The Wheel Encoder is the WYC-H206 Slotted Optical
-Photointerrupter Sensor Module. It measures the distance in centimeters (cm).
+The **_WheelEncoder_** calculates the distance traveled by the rover. The Wheel Encoder is the . It measures the
+distance in centimeters (cm).
 
 #### InertialUnit
 
@@ -62,3 +62,14 @@ From getting the data to driving to the target point:
 2. calculate trajectory
 3. rotate the rover to face the target point dead straight
 4. drive the rover straight to the target point
+
+## Parts List
+
+1. x2 TB6612FNG Motor Driver Modules
+2. x1 MPU-6050 IMU Module
+3. x2 AA Battery Pack
+4. x1 WYC-H206 Slotted Optical Photointerrupter Sensor Module
+5. x? Jumper Wires
+6. x1 ESP32 Dev Board
+7. x1 Breadboard
+8. x1 Rover Chasis w/ Wheels
