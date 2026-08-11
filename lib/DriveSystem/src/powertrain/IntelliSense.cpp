@@ -87,14 +87,12 @@ void IntelliSense::run() {
         const float target_distance = trajectory.distance;
         constexpr float delta_distance = 1.5f; // cm
 
-        if (target_distance >= 0.0f && target_distance < delta_distance) {
-            continue;
-        }
-
-        while (wheelEncoder.getDistanceTravelled() < target_distance + delta_distance) {
-            // todo: nothing to fix. if rover has to go back, its not possible because it can only go forward
-            differentialDrive.drive(1);
-            vTaskDelay(pdMS_TO_TICKS(10));
+        if (target_distance != 0.0f) {
+            while (wheelEncoder.getDistanceTravelled() < target_distance + delta_distance) {
+                // todo: nothing to fix. if rover has to go back, its not possible because it can only go forward
+                differentialDrive.drive(1);
+                vTaskDelay(pdMS_TO_TICKS(10));
+            }
         }
 
         differentialDrive.stop();
