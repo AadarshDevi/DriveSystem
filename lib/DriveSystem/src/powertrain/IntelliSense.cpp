@@ -42,14 +42,32 @@ void IntelliSense::run() {
         float target_angle = normalizeAngle(trajectory.angle);
         constexpr float delta_angle = 1.0f;
 
-        int rotation_direction = 0;
+        // int rotation_direction = 0;
 
-        if (target_angle <= normalizeAngle(starting_angle + 180)) {
-            rotation_direction = 1;
-        } else if (target_angle > normalizeAngle(starting_angle + 180)) {
-            rotation_direction = -1;
+        // if (target_angle - starting_angle <= 90.0f || target_angle - starting_angle <= 180.0f) {
+        //     rotation_direction = 1;
+        // } else if (target_angle - starting_angle <= 90.0f || target_angle - starting_angle <= 180.0f) {
+        //     rotation_direction = -1;
+        // } else {
+        //     rotation_direction = 0;
+        // }
+        //
+        // if (target_angle <= normalizeAngle(starting_angle + 180)) {
+        //     rotation_direction = 1;
+        // } else if (target_angle > normalizeAngle(starting_angle + 180)) {
+        //     rotation_direction = -1;
+        // } else {
+        //     rotation_direction = 0;
+        // }
+
+        float right_angle = normalizeAngle(starting_angle - target_angle);
+
+        int rotation_direction;
+
+        if (right_angle > 0.0f && right_angle < 180.0f) {
+            rotation_direction = 1; // right
         } else {
-            rotation_direction = 0;
+            rotation_direction = -1; // left
         }
 
         differentialDrive.enableDrive(true);
