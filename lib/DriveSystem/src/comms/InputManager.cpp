@@ -61,13 +61,13 @@ void InputManager::run() {
                 float y1 = Serial.parseFloat();
 
                 base_location = {
-                    .x = Serial.parseFloat(),
-                    .y = Serial.parseFloat(),
+                    .x = -y0,
+                    .y = x0,
                     .z = 0.0f
                 };
                 target_location = {
-                    .x = Serial.parseFloat(),
-                    .y = Serial.parseFloat(),
+                    .x = -y1,
+                    .y = x1,
                     .z = 0.0f
                 };
                 has_new_data = true;
