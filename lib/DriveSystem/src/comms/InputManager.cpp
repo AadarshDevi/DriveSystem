@@ -54,6 +54,12 @@ void InputManager::run() {
                 // fixme this will not work
                 // --set-location x0 y0 x1 y1
 
+                float x0 = Serial.parseFloat();
+                float y0 = Serial.parseFloat();
+
+                float x1 = Serial.parseFloat();
+                float y1 = Serial.parseFloat();
+
                 base_location = {
                     .x = Serial.parseFloat(),
                     .y = Serial.parseFloat(),
