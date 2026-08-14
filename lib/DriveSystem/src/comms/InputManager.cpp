@@ -61,12 +61,12 @@ void InputManager::run() {
                 float y1 = Serial.parseFloat();
 
                 base_location = {
-                    .x = -y0,
+                    .x = y0,
                     .y = x0,
                     .z = 0.0f
                 };
                 target_location = {
-                    .x = -y1,
+                    .x = y1,
                     .y = x1,
                     .z = 0.0f
                 };
